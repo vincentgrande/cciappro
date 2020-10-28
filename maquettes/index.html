@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Connexion</title>
+    <meta name="author" content="Golder Lucas">
+    <link rel="stylesheet" href="./CSS/grid.css">
+    <!--<link rel="stylesheet" href="./CSS/style.css">-->
+    <link rel="stylesheet" href="./CSS/connexion.css">
+    <script src="./js/all.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/connexion.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <meta name="description" content="CCIAPPRO">
+</head>
+
+<body class="fnd-gris">
+    <div class="grid">
+        <header class="dp-flex fnd-gris">
+            <img class="logo-cci" src="IMG/logo-cci.png" alt="Logo CCI">
+        </header>
+        <div class="content">
+            <section class="dp-flex">
+                <div class="btn-mid">
+                    <button class="btn-connect fnd-bleu btn-left" id="btn-co" onclick="resetclass();">
+                        <p class="btn-co-pink">SE CONNECTER</p>
+                    </button>
+                    <button class="btn-connect fnd-blanc btn-right" id="btn-insc" onclick="changeclass();">
+                        <p class="btn-co-pink">S'INSCRIRE</p>
+                    </button>
+                </div>
+            </section>
+            <div class="fnd-blanc zone-form dp-flex">
+                <form class="formulaire dp-block" id="form-co">
+                    <label for="">Nom de compte :</label><br>
+                    <input class="input-form" type="text"><br>
+                    <label for="">Mot de passe :</label><br>
+                    <input class="input-form" type="password">
+                    
+                    <a href="./shop.html" class="btn-submit">Connexion Utilisateur</a>
+                    <a href="./admin.html" class="btn-submit align-right">Connexion Admin</a><br><br><br>
+                    <a class="link" onclick="mdpForgot();">Mot de passe oublié ?</a><br>
+                </form>
+                <form class="formulaire dp-none" id="form-mdp">
+                        <label for="">Adresse e-mail :</label><br>
+                        <input class="input-form" type="text"><br>
+                        <label for="">Votre message :</label><br>
+                        <textarea rows="4" cols="50"></textarea><br>
+                        <input class="btn-submit" type="submit" value="Envoyer"><br>   
+                </form>
+
+                <form class="formulaire dp-none" id="form-insc">
+                    <label for="">Nom :</label><br>
+                    <input class="input-form" type="text"><br>
+                    <label for="">Prénom :</label><br>
+                    <input class="input-form" type="text"><br>
+                    <label for="">Mail :</label><br>
+                    <input class="input-form" type="email"><br>
+                    <label for="">Nom de compte :</label><br>
+                    <input class="input-form" type="text"><br>
+                    <label for="">Mot de passe :</label><br>
+                    <input class="input-form" type="password"><br>
+                    <label for="">Confirmer le mot de passe :</label><br>
+                    <input class="input-form" type="password"><br>
+                    <label for="">Département :</label><br>
+                    <select class="input-form" name="departement">
+                        <option value="">--Choisir un département--</option>
+                        <option value="cat">Accueil</option>
+                        <option value="dog">Comptabilité</option>
+                    </select>
+                    <a href="./shop.html" class="btn-submit">Connexion Utilisateur</a>
+                    <a href="./admin.html" class="btn-submit align-right">Connexion Admin</a><br><br><br>
+                    <a class="link" onclick="mdpForgotInsc();">Mot de passe oublié ?</a><br>
+                </form>
+                <form class="formulaire dp-none" id="form-mdp-insc">
+                    <label for="">Adresse e-mail :</label><br>
+                    <input class="input-form" type="text"><br>
+                    <label for="">Votre message :</label><br>
+                    <textarea rows="4" cols="50"></textarea><br>
+                    <input class="btn-submit" type="submit" value="Envoyer"><br>   
+            </form>
+
+            </div>
+        </div>
+        <footer>
+            <p>2020 | CCIAPPRO &#x24D2;</p>
+        </footer>
+    </div>
+</body>
+
+</html>

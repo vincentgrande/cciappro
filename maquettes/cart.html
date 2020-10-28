@@ -1,0 +1,76 @@
+<!doctype html> 
+<html lang="fr"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <meta name="author" content="Grande Vincent">
+    <meta name="author" content="Haller Antoine">
+    <link rel="stylesheet" href="./CSS/grid.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/cart.css">
+    <script src="./js/all.js"></script>
+    <script src="./js/script.js"></script>
+    <meta name="description" content="CCIAPPRO">
+    <title>Panier</title> 
+    <!--[if lte IE 8]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>    
+    <![endif]--> 
+  </head> 
+ 
+  <body> 
+    <div class="grid"> 
+      <section class="autogrid nav-bar">
+        <div>
+            <p class="menuUn"><a href="shop.html" class="dropbtn nav-blue"><i class="fas fa-store"></i>FOURNITURE</a></p>
+        </div>
+        <div>
+            <p class="menuUn"><a href="cart.html" class="dropbtn nav-blue"><i class="fas fa-shopping-cart"></i>PANIER</a></p>
+        </div>
+        <div>
+            <p class="menuDeux"><button onclick="drop()" class="dropbtn nav-pink li-nav"><i class="fas fa-user"></i>Vincent GRANDE</button></p>
+            <div class="dropdown">
+                <div id="myDropdown" class="dropdown-content">
+                    <p class="menuDrop"><a href="./user.html">Historique des commandes</a></p>
+                    <p class="menuDrop"><a href="./parametres.html">Paramètres</a></p>
+                    <p class="menuDrop"><a href="./index.html">Déconnexion</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <header class="fnd-gris header-gris dp-flex">
+        <img class="header-img" src="IMG/logo-cci.png" alt="Logo CCI">
+        <div class="fnd-gris header-fnd-title">
+            <h1 class="header-title">Panier</h1>
+        </div>
+    </header>
+      <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="child-section">Mon panier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-margin half-table">Produit</td>
+                    <td class="td-margin quart-table">Quantité</td>
+                </tr>
+                <tr>
+                    <td class="td-margin half-table dp-flex"><img class="img-product" src="./IMG/fluo.png"><p>Surligneur</p></td>
+                    <td class="td-margin quart-table">3</td>
+                </tr>
+                <tr>
+                    <td class="td-margin half-table dp-flex"><img class="img-product"src="./IMG/cahier.png"><p>Cahier</p></td>
+                    <td class="td-margin quart-table">4</td>
+                </tr>
+                <tr>
+                    <td class="td-margin half-table dp-flex"><img class="img-product"src="./IMG/colle.png"><p>Colle</p></td>
+                    <td class="td-margin quart-table">6</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="envoi">Commander</button>
+      </div> 
+      <footer><p>2020 | CCIAPPRO &#x24D2;</p></footer> 
+    </div> 
+  </body> 
+</html> 

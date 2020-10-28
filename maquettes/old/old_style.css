@@ -1,0 +1,155 @@
+/* BODY */
+
+body {
+    margin: 0px;
+}
+
+/* POLICE */
+
+.nav-blue {
+    color: #014A86;
+    font-size: 26px;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.nav-pink {
+    color: #DC1A4F;
+    font-size: 26px;
+    text-decoration: none;
+}
+
+h1 {
+    color: #DC1A4F;
+    font-size: 46px;
+    margin: auto;
+    background-color: #dbdbdb;
+}
+
+/* COULEUR BASE */
+
+
+.fnd-blanc {
+    background-color: #ffffff;
+}
+
+.fnd-gris {
+    background-color: #C5C5C5;
+}
+
+.fnd-bleu {
+    background-color: #014A86;
+}
+
+.fnd-rose {
+    background-color: #DC1A4F;
+}
+
+/* ALIGN FLOAT */
+
+.align-right {
+    float: right;
+}
+
+
+/* DISPLAY */
+
+.dp-flex {
+    display: flex!important;
+}
+
+.dp-block {
+    display: block;
+}
+
+.dp-none {
+    display: none;
+}
+
+.dp-none {
+    display: none!important;
+}
+
+/* IMG */
+
+.logo-cci {
+    width: 800px;
+    height: 300px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header-gris {
+    height: 500px;
+    margin-bottom: 100px;
+}
+
+.header-img {
+    width: 800px;
+    height: 300px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.header-title {
+    margin: auto;
+    text-align: center;
+    height: 80px;
+    padding-top: 25px;
+}
+
+.header-fnd-title {
+    width: 380px;
+    height: 80px;
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+.nav-bar > a {
+    text-decoration: none;
+    margin: auto;
+    border: 1px solid #014A86;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    display: flex;
+}
+
+.nav-bar > a > li {
+    margin: auto;
+}
+
+.nav-bar {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* FOOTER */
+
+footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    height: 40px;
+    bottom: 0;
+    clear: both;
+    display: flex;
+    width: 100%;
+}
+
+footer > p {
+    margin: auto;
+}
+
+.footer-absolute {
+    position: absolute;
+}
+
+/* ESPACEMENT */
+
+.fin-section {
+    margin-bottom: 100px;
+}

@@ -1,0 +1,114 @@
+th {
+    font-size: 46px;
+    color: #DC1A4F;
+    margin: auto;
+}
+
+.tr-statut {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.tr-commande {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.tr-info {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-commande {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1000px;
+}
+
+.section-content {
+    padding-top:2%;
+    padding-bottom: 2%;
+    display: flex;
+    margin:auto;
+    overflow: hidden;
+    position: relative;
+}
+
+td {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.half-table {
+    width: 37%;
+}
+
+.quart-table {
+    width: 21%;
+}
+
+.min-table {
+    width: 5%;
+}
+
+.livre {
+    color: green;
+}
+
+.en-cours{
+    color: orange;
+}
+
+.refuse {
+    color: red;
+}
+
+.info-img {
+    width: 70px;
+    height: 70px;
+}
+
+.info-txt {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.quarter-div {
+    height: 25%;
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+.info-table {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.td-noauto {
+    margin: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    margin-left: 80px;
+}
+
+tr {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+thead {
+    border: 1px black solid;
+}
+
+.tr-title {
+    display: flex;
+}

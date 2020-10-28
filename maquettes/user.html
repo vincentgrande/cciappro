@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Grande Vincent">
+    <link rel="stylesheet" href="./CSS/grid.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/user.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/all.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./JS/user.js"></script>
+    <meta name="description" content="CCIAPPRO">
+    <title>Historique de commande</title>
+    <!--[if lte IE 8]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>    
+    <![endif]-->
+</head>
+
+<body>
+    <div class="grid">
+        <section class="autogrid nav-bar">
+            <div>
+                <p class="menuUn"><a href="shop.html" class="dropbtn nav-blue"><i class="fas fa-store"></i>FOURNITURE</a></p>
+            </div>
+            <div>
+                <p class="menuUn"><a href="cart.html" class="dropbtn nav-blue"><i class="fas fa-shopping-cart"></i>PANIER</a></p>
+            </div>
+            <div>
+                <p class="menuDeux"><button onclick="drop()" class="dropbtn nav-pink li-nav"><i class="fas fa-user"></i>Vincent GRANDE</button></p>
+                <div class="dropdown">
+                    <div id="myDropdown" class="dropdown-content">
+                        <p class="menuDrop"><a href="./user.html">Historique des commandes</a></p>
+                        <p class="menuDrop"><a href="./parametres.html">Paramètres</a></p>
+                        <p class="menuDrop"><a href="./index.html">Déconnexion</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <header class="fnd-gris header-gris dp-flex">
+            <img class="header-img" src="IMG/logo-cci.png" alt="Logo CCI">
+            <div class="fnd-gris header-fnd-title">
+                <h1 class="header-title">Historique de commande</h1>
+            </div>
+        </header>
+        <div class="content">
+            <section class="fin-section section-content">
+                <table class="table-commande">
+                    <thead>
+                        <tr class="tr-title">
+                            <th class="child-section">Mon historique de commande</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr-statut">
+                            <td class="td-margin half-table">Produit</td>
+                            <td class="td-margin quart-table">Date de commande</td>
+                            <td class="quart-table">Statut</td>
+                            <td class="min-table"></td>
+                        </tr>
+
+                        <tr class="tr-commande">
+                            <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
+                            <td class="td-margin quart-table">03/09/2020</td>
+                            <td class="quart-table livre">Livré</td>
+                            <td class="min-table"><i onclick="showInfoOne();" class="fas fa-angle-down"></i></td>
+                        </tr>
+                        <tr class="tr-info dp-none" id="order-one">
+                            <td class="">
+                                <p><img class="info-img" src="IMG/fluo.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/cahier.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/ciseaux.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/colle.png" alt=""></p>
+                            </td>
+                            <td class="quart-table td-noauto">
+                                <p class="info-txt ">2x Fluo</p>
+                                <p class="info-txt ">4x Cahier</p>
+                                <p class="info-txt ">1x Ciseaux</p>
+                                <p class="info-txt ">6x Colle</p>
+                            </td>
+                            <td class="min-table td-noauto">
+                                <p class="livre info-txt">Livré</p>
+                                <p class="livre info-txt">Livré</p>
+                                <p class="livre info-txt">Livré</p>
+                                <p class="livre info-txt">Livré</p>
+                            </td>
+                            <td class="min-table"></td>
+                        </tr>
+
+                        <tr class="tr-commande">
+                            <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
+                            <td class="td-margin quart-table">03/09/2020</td>
+                            <td class="quart-table en-cours">En cours de livraison</td>
+                            <td class="min-table"><i onclick="showInfoTwo();" class="fas fa-angle-down"></i></td>
+                        </tr>
+                        <tr class="tr-info dp-none" id="order-two">
+                            <td class="">
+                                <p><img class="info-img" src="IMG/fluo.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/cahier.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/ciseaux.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/colle.png" alt=""></p>
+                            </td>
+                            <td class="quart-table td-noauto">
+                                <p class="info-txt ">2x Fluo</p>
+                                <p class="info-txt ">4x Cahier</p>
+                                <p class="info-txt ">1x Ciseaux</p>
+                                <p class="info-txt ">6x Colle</p>
+                            </td>
+                            <td class="min-table td-noauto">
+                                <p class="livre info-txt">Livré</p>
+                                <p class="en-cours info-txt">En cours de<br>livraison</p>
+                                <p class="livre info-txt">Livré</p>
+                                <p class="en-cours info-txt">En cours de<br>livraison</p>
+                            </td>
+                            <td class="min-table"></td>
+                        </tr>
+
+                        <tr class="tr-commande">
+                            <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
+                            <td class="td-margin quart-table">03/09/2020</td>
+                            <td class="quart-table refuse">Refusé</td>
+                            <td class="min-table"><i onclick="showInfoThree();" class="fas fa-angle-down"></i></td>
+                        </tr>
+                        <tr class="tr-info dp-none" id="order-three">
+                            <td class="">
+                                <p><img class="info-img" src="IMG/fluo.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/cahier.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/ciseaux.png" alt=""></p>
+                                <p><img class="info-img" src="IMG/colle.png" alt=""></p>
+                            </td>
+                            <td class="quart-table td-noauto">
+                                <p class="info-txt ">2x Fluo</p>
+                                <p class="info-txt ">4x Cahier</p>
+                                <p class="info-txt ">1x Ciseaux</p>
+                                <p class="info-txt ">6x Colle</p>
+                            </td>
+                            <td class="min-table td-noauto">
+                                <p class="refuse info-txt">Refusé</p>
+                                <p class="refuse info-txt">Refusé</p>
+                                <p class="refuse info-txt">Refusé</p>
+                                <p class="refuse info-txt">Refusé</p>
+                            </td>
+                            <td class="min-table"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <footer>
+            <p>2020 | CCIAPPRO &#x24D2;</p>
+        </footer>
+    </div>
+</body>
+
+</html>

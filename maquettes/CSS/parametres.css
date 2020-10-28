@@ -1,0 +1,44 @@
+.formulaire {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    width: 500px;
+}
+
+.input-form {
+    display: block;
+    margin-bottom: 30px;
+    width: 500px;
+    height: 40px;
+}
+
+.section-parametres {
+    flex-direction: column;
+}
+
+.page-title {
+    color: #DC1A4F;
+    font-size: 36px;
+    margin: auto;
+    margin-top:2%;
+    margin-bottom:2%;
+}
+
+.btn-submit {
+    background-color: #DC1A4F;
+    padding: 10px;
+    display: inline-block;
+    margin-top: 2%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    margin: auto;
+    cursor: pointer;
+    outline: none;
+    margin-bottom:2%;
+}

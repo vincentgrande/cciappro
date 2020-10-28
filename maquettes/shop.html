@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Grande Vincent">
+    <link rel="stylesheet" href="./CSS/grid.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./css/shop.css">
+    <script src="./js/all.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/shop.js"></script>
+    <meta name="description" content="CCIAPPRO">
+    <title>Shop</title>
+    <!--[if lte IE 8]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>    
+    <![endif]-->
+</head>
+
+<body>
+    <div class="grid">
+        <section class="autogrid nav-bar">
+            <div>
+                <p class="menuUn"><a href="shop.html" class="dropbtn nav-blue"><i class="fas fa-store"></i>FOURNITURE</a></p>
+            </div>
+            <div>
+                <p class="menuUn"><a href="cart.html" class="dropbtn nav-blue"><i class="fas fa-shopping-cart"></i>PANIER</a></p>
+            </div>
+            <div>
+                <p class="menuDeux"><button onclick="drop()" class="dropbtn nav-pink li-nav"><i class="fas fa-user"></i>Vincent GRANDE</button></p>
+                <div class="dropdown">
+                    <div id="myDropdown" class="dropdown-content">
+                        <p class="menuDrop"><a href="./user.html">Historique des commandes</a></p>
+                        <p class="menuDrop"><a href="./parametres.html">Paramètres</a></p>
+                        <p class="menuDrop"><a href="./index.html">Déconnexion</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <header class="fnd-gris header-gris dp-flex">
+            <img class="header-img" src="IMG/logo-cci.png" alt="Logo CCI">
+            <div class="fnd-gris header-fnd-title">
+                <h1 class="header-title">Fourniture</h1>
+            </div>
+        </header>
+        <div class="content">
+            <div class="div-shop">
+                <div class="div-third searchbar">
+                    <div>
+                        <select class="select-size" name="marque" id="marque" onchange="select('marque')">
+                            <option value="" style="padding-right:10px;">Marque</option>
+                            <option value="maped">MAPED</option>
+                            <option value="uhu">UHU</option>
+                            <option value="bic">BIC</option>
+                            <option value="stabilo">Stabilo</option>
+                            <option value="scotch">Scotch</option>
+                            <option value="oxford">Oxford</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="type" class="select-size select" id="type" onchange="select('type')">
+                            <option value="">Type</option>
+                            <option value="regle">Regle</option>
+                            <option value="colle">Colle</option>
+                            <option value="ciseau">Ciseau</option>
+                            <option value="rubanadhesif">Ruban adhésif</option>
+                            <option value="surligneur">Surligneur</option>
+                            <option value="cahier">Cahier</option>
+                        </select>
+                    </div>
+                    <div>
+                        <form>
+                            <input class="select-size select" type="text" placeholder="Recherche &#x1F50D;" id="searchbar" style="font-weight: bold;font-size:1em;">
+                        </form>
+                    </div>
+                </div>
+                <div id ="recherche"></div>
+                <div class="div-third articles">
+                    <div class="div-produit uhu colle">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Colle</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex1" rel="modal:open"><img class="center-bis" src="./img/colle.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+
+                    <div class="div-produit maped ciseau">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Ciseau</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex2" rel="modal:open"><img class="center-bis" src="./img/ciseau.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+
+                    <div class="div-produit scotch rubanadhesif">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Adhésif</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex3" rel="modal:open"><img class="center-bis" src="./img/scotch.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="div-third articles">
+                    <div class="div-produit scotch colle">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Colle</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex4" rel="modal:open"><img class="center-bis" src="./img/colle2.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+
+                    <div class="div-produit maped regle maped">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Règle</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex5" rel="modal:open"><img class="center-bis" src="./img/regle.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+
+                    <div class="div-produit stabilo surligneur">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Surligneur</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex6" rel="modal:open"><img class="center-bis" src="./img/fluo.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+                </div>
+                <div class="div-third articles">
+                    <div class="div-produit oxford cahier">
+                        <!-- ID = nomProduit (venu de la DB)-->
+                        <h3 class="center-bis">Cahier</h3><!-- Titre = nomProduit (venu de la DB)-->
+                        <a class="dp-flex" href="#ex7" rel="modal:open"><img class="center-bis" src="./img/cahier.png" width="100px" height="100px"></a><!-- src = imgProduit (venu de la DB)-->
+                        <form class="dp-flex">
+                            <input class="center-bis btnpanier" type="submit" value="Ajouter au panier">
+                            <input class="center-bis" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>2020 | CCIAPPRO &#x24D2;</p>
+        </footer>
+    </div>
+</body>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<div id="ex1" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Colle</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/colle.png" width="200px" height="200px" alt="Image from database">
+        <p>Belle colle UHU</p>
+    </div>
+</div>
+<div id="ex2" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Ciseau</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/ciseau.png" width="200px" height="200px" alt="Image from database">
+        <p>Beau ciseaux qui coupent bien</p>
+    </div>
+</div>
+<div id="ex3" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Ruban adhesif</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/scotch.png" width="200px" height="200px" alt="Image from database">
+        <p>Ruban qui colle fort</p>
+    </div>
+</div>
+<div id="ex4" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Colle</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/colle2.png" width="200px" height="200px" alt="Image from database">
+        <p>Colle scotch</p>
+    </div>
+</div>
+<div id="ex5" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Regle</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/regle.png" width="200px" height="200px" alt="Image from database">
+        <p>Belle regle</p>
+    </div>
+</div>
+<div id="ex6" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Surligneur</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/fluo.png" width="200px" height="200px" alt="Image from database">
+        <p>Beau surligneurs qui colorent bien</p>
+    </div>
+</div>
+<div id="ex7" class="modal" style="height:auto;">
+    <h2 class="titre-modal">Cahier</h2><br>
+    <div class="modal-content" style="border:none;">
+        <img class="img-modal" src="./img/cahier.png" width="200px" height="200px" alt="Image from database">
+        <p>Beaux cahiers</p>
+    </div>
+</div>
+</html>

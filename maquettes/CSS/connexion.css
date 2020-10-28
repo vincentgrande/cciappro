@@ -1,0 +1,145 @@
+@font-face {
+	font-family: "abeezee";
+	src: url('abeezee.otf');
+}
+label {
+    display: block;
+    width: 500px;
+}
+
+.input-form {
+    display: block;
+    margin-bottom: 30px;
+    width: 500px;
+    height: 40px;
+}
+
+.btn-connect {
+    width: 400px;
+    text-align: center;
+    outline: none
+}
+
+.btn-mid {
+    display: flex;
+    margin: auto;
+}
+
+.zone-form {
+    width: 800px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+    flex-direction: column;
+}
+
+.btn-left {
+    border-radius: 20px 0px 0px 0px;
+    border: black 1px solid;
+}
+
+.btn-right {
+    border: black 1px solid;
+    border-radius: 0px 20px 0px 0px;
+}
+
+.btn-submit {
+    background-color: #DC1A4F;
+    padding: 10px;
+    display: inline-block;
+    margin-top: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    width: max-content;
+    border: none;
+}
+
+.formulaire {
+    margin: auto;
+}
+
+.link {
+    color: #DC1A4F;
+    border: 0px;
+    width: 100px !important;
+    height: 40px !important;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+header {
+    margin-bottom: 100px;
+}
+
+.btn-co-pink {
+    color: #DC1A4F;
+    font-weight: bold;
+}
+
+/**/
+
+.dp-none {
+    display: none !important;
+}
+
+.dp-flex {
+    display: flex !important;
+}
+
+.fnd-gris {
+    background-color: #C5C5C5;
+}
+
+footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    height: 40px;
+    bottom: 0;
+    clear: both;
+    display: flex;
+    width: 100%;
+}
+
+footer {
+    display: table-row;
+}
+
+.fnd-bleu {
+    background-color: #014A86;
+}
+
+.fnd-blanc {
+    background-color: #ffffff;
+}
+
+.grid {
+    display: table;
+    height: 100%;
+    width: 100%;
+    behavior: url(display-table.min.htc);
+}
+
+.logo-cci {
+    width: 800px;
+    height: 300px;
+    margin: auto;
+}
+
+body {
+    margin: 0px;
+    font-family: abeezee;
+}
+
+.content {
+    display: table-row;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.align-right {
+    float: right;
+}
