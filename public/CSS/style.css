@@ -1,0 +1,247 @@
+@font-face {
+    font-family: "abeezee";
+    src: url('abeezee.otf');
+}
+
+html,
+body {
+    font-family: abeezee;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* POLICE */
+
+.nav-blue {
+    color: #014A86;
+    font-size: 26px;
+    text-decoration: none;
+    margin: auto;
+    font-family: abeezee;
+}
+
+.nav-pink {
+    color: #DC1A4F;
+    font-size: 26px;
+    text-decoration: none;
+    margin: auto;
+    font-family: abeezee;
+
+}
+
+h1 {
+    color: #DC1A4F;
+    font-size: 46px;
+    margin: auto;
+    background-color: #dbdbdb;
+}
+
+/* COULEUR BASE */
+
+
+.fnd-blanc {
+    background-color: #ffffff;
+}
+
+.fnd-gris {
+    background-color: #C5C5C5;
+}
+
+.fnd-bleu {
+    background-color: #014A86;
+}
+
+/* DISPLAY */
+
+.dp-flex {
+    display: flex !important;
+}
+
+.dp-block {
+    display: block;
+}
+
+.dp-none {
+    display: none;
+}
+
+.dp-none {
+    display: none !important;
+}
+
+/* IMG */
+
+.logo-cci {
+    width: 800px;
+    height: 300px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header-gris {
+    height: 200px;
+}
+
+.header-img {
+    width: 400px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.header-title {
+    margin: auto;
+    text-align: center;
+    font-size: 2em;
+    padding: 10px;
+}
+
+.header-fnd-title {
+    width: 380px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+}
+
+/* NAVIGATION */
+
+.nav-bar > a {
+    text-decoration: none;
+    margin: auto;
+    border: 1px solid #014A86;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    display: flex;
+}
+
+.nav-bar > a > li {
+    margin: auto;
+}
+
+.nav-bar {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.nav-bar p {
+    text-decoration: none;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    display: flex;
+}
+
+/* FOOTER */
+
+footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    height: 40px;
+    bottom: 0;
+    clear: both;
+    display: flex;
+    width: 100%;
+}
+
+/* ESPACEMENT */
+
+.fin-section {
+    margin-bottom: 100px;
+}
+
+/* Vincent ajouta du css */
+.grid {
+    display: table;
+    height: 100%;
+    width: 100%;
+    behavior: url(display-table.min.htc);
+}
+
+.content {
+    display: table-row;
+    background: white;
+    /*border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;*/
+
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    display: table-row;
+    background: white;
+}
+
+footer {
+    display: table-row;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.dropbtn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown {
+    position: absolute;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 300px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    text-align: center;
+    color: black;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    line-height: 60px;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.menuUn {
+    border-top: #014A86 1px solid ;
+    border-bottom: #014A86 1px solid ;
+    border-right: #014A86 1px solid ;
+}
+
+.menuDeux {
+    border-top: #014A86 1px solid ;
+    border-bottom: #014A86 1px solid ;
+}
+
+.menuDrop {
+    border-top: #014A86 1px solid ;
+    border-bottom: #014A86 1px solid ;
+}
