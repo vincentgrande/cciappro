@@ -70,10 +70,10 @@
         <br>
         <form class="formulaire" id="form-mdp-insc">
                     <label for="">Adresse e-mail :</label><br>
-                    <input class="input-form" type="text"><br>
+                    <input class="input-form" type="text" name="mail" id="mail" wire:model="mail"><br>
                     <label for="">Votre message :</label><br>
-                    <textarea rows="4" cols="50"></textarea><br>
-                    <input class="btn-submit" type="submit" value="Envoyer"><br>   
+                    <textarea rows="4" cols="50" name="mess" id="mess" wire:model="mess"></textarea><br>
+                    <input class="btn-submit" type="submit" value="Envoyer" wire:click.prevent="mdpreset"><br>   
             </form>
         @else
         @endif

@@ -5,12 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Hash;
 use App\User;
+use Illuminate\Http\Request;
 
 class LoginRegister extends Component
 {
-    public $users, $email, $password, $name, $firstname, $dptUser, $isAdmin, $loginUser;
+    public $users, $email, $password, $name, $firstname, $dptUser, $isAdmin, $loginUser, $mail,$mess;
     public $registerForm = false;
     public $mdpforgot = false;
+    public $mdpreset = false;
 
     public function render()
     {
@@ -45,6 +47,14 @@ class LoginRegister extends Component
     public function mdpforgot()
     {
         $this->mdpforgot = !$this->mdpforgot;
+    }
+    public function mdpreset(Request $request)
+    { 
+        $validatedDate = $this->validate([
+            'mail' => 'required',
+            'mess' => 'required',
+        ]);
+        return redirect()->route('mail', ['mail' =>$this->mail, 'mess'=> $this->mess]);
     }
     public function registerStore()
     {

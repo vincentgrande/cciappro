@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/','loginController@index')->middleware('auth')->name('home');
 Route::view('login','livewire.home')->name('login');
 Route::get('/logout', 'loginController@logout');
+Route::get('/mail/{mail}/{mess}','loginController@passreset')->name('mail');
