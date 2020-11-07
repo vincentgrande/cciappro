@@ -6,6 +6,7 @@ function select(id) {
         document.getElementById("searchbar").value="";
     }else{
         document.getElementById('marque').value="";
+        document.getElementById("recherche").innerHTML="";
         document.getElementById("searchbar").value="";
     }
     if(x==""){

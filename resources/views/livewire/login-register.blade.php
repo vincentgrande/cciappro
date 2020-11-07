@@ -60,11 +60,12 @@
                 ::placeholder {color: red;}
             </style>
             <input type="password" wire:model="password" class="input-form" placeholder="@error('password'){{ $message }}@enderror" >
+            @if (session()->has('error'))
+            {{ session('error') }}
+            @endif 
+            <br>
             <button class="btn-submit" wire:click.prevent="login">Connexion</button>         
             <a class="link" wire:click="mdpforgot">Mot de passe oublié ?</a><br>
-            @if (session()->has('erreur'))
-            {{ session('erreur') }}
-            @endif 
         </form>
         @if($mdpforgot)
         <br>

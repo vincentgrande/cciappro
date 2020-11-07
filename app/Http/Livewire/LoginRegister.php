@@ -32,11 +32,16 @@ class LoginRegister extends Component
             'loginUser' => 'required',
             'password' => 'required',
         ]);
-        
         if(\Auth::attempt(array('loginUser' => $this->loginUser, 'password' => $this->password))){
-            return redirect()->route('home');
+            $user = \Auth::user();
+            if($user->isAdmin){
+                return redirect()->route('admin');
+            }else{
+                return redirect()->route('shop');
+            }
+    
         }else{
-            session()->flash('error', 'email and password are wrong.');
+            session()->flash('error', 'Nom d\'utilisateur ou mot de passe érroné');
         }
     }
 

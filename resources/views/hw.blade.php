@@ -81,12 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    HELLO WORLD !
+                    HELLO ADMIN !
                 </div>
-                <p> Salut {{ $nom }}</p>
-                <p>{{ $admin }}</p>
+                <a href="{{ route('shop') }}">GO TO SHOP</a>
                 <div class="links">
-                <a href="/logout">Déconnexion</a>
+            
                 </div>
             </div>
         </div>
