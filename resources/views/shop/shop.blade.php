@@ -44,10 +44,14 @@
                         <!-- ID = nomProduit (venu de la DB)-->
                         <h3 class='center-bis'>$article->nomProduit</h3><!-- Titre = nomProduit (venu de la DB)-->
                         <a class='dp-flex' href='#ex$i' rel='modal:open'><img class='center-bis' src='$article->imgProduit' width='100px' height='100px'></a><!-- src = imgProduit (venu de la DB)-->
-                        <form class='dp-flex'>
-                            <input class='center-bis btnpanier' type='submit' value='Ajouter au panier'>
-                            <input class='center-bis' type='number' id='quantity' name='quantity' min='1' max='5' value='1'>
-                        </form>
+                        <form class='dp-flex' method='post'>
+                        ";
+                    ?>{{ csrf_field() }}<?php 
+                    echo"
+                        <input class='center-bis btnpanier' type='submit' value='Ajouter au panier'>
+                        <input class='center-bis' type='number' id='quantity' name='quantity' min='1' max='5' value='1'>
+                        <input type='text' value='$article->nomProduit' name='article' style='display:none'>
+                    </form>
                     </div>
                     <div id='ex$i' class='modal' style='height:auto;'>
                         <h2 class='titre-modal'>$article->nomProduit</h2><br>

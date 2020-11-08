@@ -22,7 +22,7 @@
             <p class="menuUn"><a href="{{ route('shop') }}" class="dropbtn nav-blue"><i class="fas fa-store"></i>FOURNITURE</a></p>
         </div>
         <div>
-            <p class="menuUn"><a href="#" class="dropbtn nav-blue"><i class="fas fa-shopping-cart"></i>PANIER</a></p>
+            <p class="menuUn"><a href="#" class="dropbtn nav-blue"><i class="fas fa-shopping-cart"></i>PANIER <?php if($panier>0) { echo "<span style='border-radius: 200px 200px 200px 200px;-moz-border-radius: 200px 200px 200px 200px;-webkit-border-radius: 200px 200px 200px 200px;border: 0px solid #000000;background-color:#DC1A4F;color:white;font-size:0.8em;'>+$panier</span>";}?></a></p>
         </div>
         <div>
             <p class="menuDeux"><button onclick="drop()" class="dropbtn nav-pink li-nav"><i class="fas fa-user"></i> {{ $user }}</button></p>
