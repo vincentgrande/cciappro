@@ -18,3 +18,4 @@ Route::view('login','livewire.home')->name('login');
 Route::get('/logout', 'loginController@logout')->name('logout');;
 Route::get('/mail/{mail}/{mess}','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
+Route::get('/cart','CartController@index')->name('cart');
