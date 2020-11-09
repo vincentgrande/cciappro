@@ -69,12 +69,13 @@
         </form>
         @if($mdpforgot)
         <br>
-        <form class="formulaire" id="form-mdp-insc">
+            <form class='formulaire' id="form-mdp-insc" method='post' action="{{ route('mail') }}">    
+                {{ csrf_field() }}
                     <label for="">Adresse e-mail :</label><br>
                     <input class="input-form" type="text" name="mail" id="mail" wire:model="mail"><br>
                     <label for="">Votre message :</label><br>
                     <textarea rows="4" cols="50" name="mess" id="mess" wire:model="mess"></textarea><br>
-                    <input class="btn-submit" type="submit" value="Envoyer" wire:click.prevent="mdpreset"><br>   
+                    <input class="btn-submit" type="submit" value="Envoyer"><br>   
             </form>
         @else
         @endif

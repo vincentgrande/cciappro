@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('login','livewire.home')->name('login');
 Route::get('/','ShopController@index')->middleware('auth')->name('shop');
 Route::get('/admin','AdminController@admin')->middleware('auth')->name('admin');
-Route::view('login','livewire.home')->name('login');
-Route::get('/logout', 'loginController@logout')->name('logout');;
-Route::get('/mail/{mail}/{mess}','loginController@passreset')->name('mail');
+Route::get('/logout', 'loginController@logout')->name('logout');
+Route::get('/cart','CartController@index')->middleware('auth')->name('cart');
+Route::post('/login','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
-Route::get('/cart','CartController@index')->name('cart');

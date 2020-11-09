@@ -25,9 +25,9 @@ class loginController extends Controller
             ]);
         }
     }
-    public function passreset($mail,$mess){
-        Mail::to($mail)->send(new PassReset($mail,$mess)); //on mettre Mail::to('adressedesservicesgeneraux')
-        Mail::to($mail)->send(new PassResetConfirm($mail,$mess));
+    public function passreset(Request $request){
+        Mail::to($request->mail)->send(new PassReset($request->mail,$request->mess)); //on mettre Mail::to('adressedesservicesgeneraux')
+        Mail::to($request->mail)->send(new PassResetConfirm($request->mail,$request->mess));
         return redirect()->route('login');
     }
     public function logout(){
