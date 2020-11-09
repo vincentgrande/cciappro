@@ -28,7 +28,7 @@
             <p class="menuDeux"><button onclick="drop()" class="dropbtn nav-pink li-nav"><i class="fas fa-user"></i> {{ $user }}</button></p>
             <div class="dropdown">
                 <div id="myDropdown" class="dropdown-content">
-                    <p class="menuDrop"><a href="#">Historique des commandes</a></p>
+                    <p class="menuDrop"><a href="{{ route('user') }}">Historique des commandes</a></p>
                     <p class="menuDrop"><a href="#">Paramètres</a></p>
                     <p class="menuDrop"><a href="{{ route('logout') }}">Déconnexion</a></p>
                 </div>
