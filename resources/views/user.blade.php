@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('style-js')
+<script src="./JS/jquery.min.js"></script>
 <script src="./JS/user.js"></script>
 <link rel="stylesheet" href="./CSS/user.css">
 @stop
