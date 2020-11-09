@@ -15,7 +15,7 @@ class ShopController extends Controller
         $user = Auth::user();
         $panier=0;
         $value = Cookie::get(md5($user->loginUser));
-        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        $cart = unserialize($value); 
         if(gettype($cart)=="array"){
             for($i=0;$i<count($cart);$i++){
                 $panier=$panier+intval($cart[$i]['quantite']);
@@ -34,7 +34,7 @@ class ShopController extends Controller
         $user = Auth::user();
         $value = Cookie::get(md5($user->loginUser));
         $article=$request->article;
-        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        $cart = unserialize($value); 
         $bool=False;
         if(gettype($cart)=="array"){
             for($i=0;$i<count($cart);$i++){
@@ -46,13 +46,13 @@ class ShopController extends Controller
             if($bool == False){
                 $cart[] = array(  
                     'article'		=> $request->article,		
-                    'quantite'		=> intval($request->quantity),		// id de l'option de cet article
+                    'quantite'		=> intval($request->quantity),		
                 );
             }
         }else{
             $cart[] = array(  
                 'article'		=> $request->article,		
-                'quantite'		=> intval($request->quantity),		// id de l'option de cet article
+                'quantite'		=> intval($request->quantity),		
             );
         }
         return redirect()->route('shop')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use App\Commande;
 
 class UserController extends Controller
 {
@@ -23,6 +24,7 @@ class UserController extends Controller
             'title'=>"Historique de commandes",
             'user' => "$user->firstname ".strtoupper($user->name),
             'panier'=>$panier,
+            'commandes'=>Commande::where('idUser', '=', $user->id)->get(),
         ]);
         
     }

@@ -6,6 +6,18 @@
 <link rel="stylesheet" href="./CSS/user.css">
 @stop
 @section ('content')
+<?php
+/*
+foreach($commandes as $commande){
+    echo "Login : ". $commande->user->loginUser;
+    echo '<br>';
+    echo "Produit : ".$commande->produit->nomProduit;
+    echo '<br>';
+    echo "Etat : ".$commande->etat->etat;
+    echo '<br>';
+}*/
+
+?>
 <section class="fin-section section-content">
     <table class="table-commande">
         <thead>
@@ -57,10 +69,10 @@
             </tr>
             <tr class="tr-info dp-none" id="order-two">
                 <td class="">
-                    <p><img class="info-img" src="IMG/fluo.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/cahier.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/ciseaux.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/colle.png" alt=""></p>
+                    <p><img class="info-img" src="img/fluo.png" alt=""></p>
+                    <p><img class="info-img" src="img/cahier.png" alt=""></p>
+                    <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
+                    <p><img class="info-img" src="img/colle.png" alt=""></p>
                 </td>
                 <td class="quart-table td-noauto">
                     <p class="info-txt ">2x Fluo</p>
@@ -85,10 +97,10 @@
             </tr>
             <tr class="tr-info dp-none" id="order-three">
                 <td class="">
-                    <p><img class="info-img" src="IMG/fluo.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/cahier.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/ciseaux.png" alt=""></p>
-                    <p><img class="info-img" src="IMG/colle.png" alt=""></p>
+                    <p><img class="info-img" src="img/fluo.png" alt=""></p>
+                    <p><img class="info-img" src="img/cahier.png" alt=""></p>
+                    <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
+                    <p><img class="info-img" src="img/colle.png" alt=""></p>
                 </td>
                 <td class="quart-table td-noauto">
                     <p class="info-txt ">2x Fluo</p>
