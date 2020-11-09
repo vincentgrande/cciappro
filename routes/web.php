@@ -17,5 +17,6 @@ Route::get('/','ShopController@index')->middleware('auth')->name('shop');
 Route::get('/admin','AdminController@admin')->middleware('auth')->name('admin');
 Route::get('/logout', 'loginController@logout')->name('logout');
 Route::get('/cart','CartController@index')->middleware('auth')->name('cart');
+Route::get('/user','UserController@index')->middleware('auth')->name('user');
 Route::post('/login','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
