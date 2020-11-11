@@ -21,4 +21,4 @@ Route::get('/user','UserController@index')->middleware('auth')->name('user');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
 Route::post('/login','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
-Route::get('/submit', 'CartController@commander')->middleware('auth')->name('commander');
+Route::post('/submit', 'CartController@commander')->middleware('auth')->name('commander');

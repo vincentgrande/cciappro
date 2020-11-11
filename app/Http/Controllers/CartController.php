@@ -53,24 +53,27 @@ class CartController extends Controller
         $user = Auth::user();
         $value = Cookie::get(md5($user->loginUser));
         $cart = unserialize($value);
-        $idCommande = Commande::max('idCommande') + 1;
-        for($i=0; $i<count($cart);$i++){ 
-            $produit=  Produit::select('idProduit')->where('nomProduit','=',$cart[$i]['article'])->get();
-            $etat= Etat::select('idEtat')->where('etat','=','En attente de validation')->get();
-            $commande = new Commande;
-            $commande->idCommande =$idCommande;
-            $commande->quantite = $cart[$i]['quantite'];
-            $commande->idProduit = $produit[0]['idProduit'];
-            $commande->idEtat =$etat[0]['idEtat'];
-            $commande->idUser = $user->id;
-            $commande->dateCommande = date("Y-m-d");
-            $commande->save();
+        if(gettype($cart)=="array"){
+            $idCommande = Commande::max('idCommande') + 1;
+            for($i=0; $i<count($cart);$i++){ 
+                $produit=  Produit::select('idProduit')->where('nomProduit','=',$cart[$i]['article'])->get();
+                $etat= Etat::select('idEtat')->where('etat','=','En attente de validation')->get();
+                $commande = new Commande;
+                $commande->idCommande =$idCommande;
+                $commande->quantite = $cart[$i]['quantite'];
+                $commande->idProduit = $produit[0]['idProduit'];
+                $commande->idEtat =$etat[0]['idEtat'];
+                $commande->idUser = $user->id;
+                $commande->dateCommande = date("Y-m-d");
+                $commande->save();
+            }
+            $cookie = Cookie::forget(md5($user->loginUser));
+
+            Mail::to($user->email)->send(new confirmationCommande($user->name, $user->firstname, $cart));
+
+            return redirect()->route('shop')->withCookie($cookie);
         }
-        $cookie = Cookie::forget(md5($user->loginUser));
-
-        Mail::to($user->email)->send(new confirmationCommande($user->name, $user->firstname, $cart));
-
-        return redirect()->route('shop')->withCookie($cookie);
+        return redirect()->route('cart');
     }
 }
 

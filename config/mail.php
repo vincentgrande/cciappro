@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'passreset@cciappro.fr'),
-        'name' => env('MAIL_FROM_NAME', 'Passreset'),
+        'address' => env('MAIL_FROM_ADDRESS', 'cciappro@cciappro.fr'),
+        'name' => env('MAIL_FROM_NAME', 'cciappro'),
     ],
 
     /*

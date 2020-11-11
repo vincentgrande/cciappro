@@ -45,7 +45,8 @@
             </tbody>
         </table>
     <div style="text-align: center">
-        <form action="{{ route('commander') }}">
+        <form action="{{ route('commander') }}" method="post">
+            {{ csrf_field() }}
             <button class="envoi">Commander</button>
         </form>
     </div>

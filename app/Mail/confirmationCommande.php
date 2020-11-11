@@ -10,7 +10,8 @@ use Illuminate\Queue\SerializesModels;
 class confirmationCommande extends Mailable
 {
     use Queueable, SerializesModels;
-
+   
+    public $name, $firstname, $cart;
     /**
      * Create a new message instance.
      *
@@ -32,6 +33,6 @@ class confirmationCommande extends Mailable
     public function build()
     {
         return $this->subject('Confirmation de votre commande') // ceci sera le sujet de l'e-mail
-                    ->view('email.confirmationCommande'); // Ceci est le fichier contactMail.blade.php traité ci-après
+                    ->view('mail.confirmationCommande'); // Ceci est le fichier contactMail.blade.php traité ci-après
     }
 }
