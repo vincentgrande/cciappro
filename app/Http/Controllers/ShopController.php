@@ -46,13 +46,15 @@ class ShopController extends Controller
             if($bool == False){
                 $cart[] = array(  
                     'article'		=> $request->article,		
-                    'quantite'		=> intval($request->quantity),		
+                    'quantite'		=> intval($request->quantity),	
+                    'img' =>	$request->img,
                 );
             }
         }else{
             $cart[] = array(  
                 'article'		=> $request->article,		
-                'quantite'		=> intval($request->quantity),		
+                'quantite'		=> intval($request->quantity),	
+                'img' =>	$request->img,
             );
         }
         return redirect()->route('shop')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
