@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Etat;
 use App\Produit;
 use App\typeProduit;
 use App\MarqueProduit;
+use App\Commande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +36,7 @@ class CartController extends Controller
         $user = Auth::user();
         $value = Cookie::get(md5($user->loginUser));
         $cart = unserialize($value);
-        $bool=False;
+        $bool = False;
         for($i=0; $i<count($cart);$i++){
             if($cart[$i]['article']==$request->article and $bool==False){
                 array_splice($cart, $i);
@@ -43,4 +45,26 @@ class CartController extends Controller
         }
     return redirect()->route('cart')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
     }
+    //fonction qui envoie le panier du cookie vers la bdd
+    public function commander(){
+        $user = Auth::user();
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);
+        $idCommande = Commande::max('idCommande') + 1;
+        for($i=0; $i<count($cart);$i++){ 
+            $produit=  Produit::select('idProduit')->where('nomProduit','=',$cart[$i]['article'])->get();
+            $etat= Etat::select('idEtat')->where('etat','=','En attente de validation')->get();
+            $commande = new Commande;
+            $commande->idCommande =$idCommande;
+            $commande->quantite = $cart[$i]['quantite'];
+            $commande->idProduit = $produit[0]['idProduit'];
+            $commande->idEtat =$etat[0]['idEtat'];
+            $commande->idUser = $user->id;
+            $commande->dateCommande = date("Y-m-d");
+            $commande->save();
+        }
+        $cookie = Cookie::forget(md5($user->loginUser));
+        return redirect()->route('shop')->withCookie($cookie);
+    }
 }
+

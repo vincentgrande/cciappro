@@ -44,5 +44,9 @@
         ?>
             </tbody>
         </table>
-        <button class="envoi">Commander</button>
+    <div style="text-align: center">
+        <form action="{{ route('commander') }}">
+            <button class="envoi">Commander</button>
+        </form>
+    </div>
 @stop
