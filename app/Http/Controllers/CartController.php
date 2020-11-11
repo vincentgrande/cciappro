@@ -25,7 +25,7 @@ class CartController extends Controller
         }
         
         return view('shop.cart',[
-            'title'=>"cart",
+            'title'=>"Panier",
             'user' => "$user->firstname ".strtoupper($user->name),
             'panier'=>$panier,
             'articles'=>unserialize($value),
