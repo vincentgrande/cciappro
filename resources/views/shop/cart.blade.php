@@ -29,7 +29,7 @@
                 }
             }
         }else{
-            echo "<tr><td>Votre panier vide</td></tr>";
+            echo "<tr><td>Votre panier est vide</td></tr>";
         }
         ?>
             </tbody>
