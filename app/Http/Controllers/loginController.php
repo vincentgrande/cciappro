@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\User;
 use App\Mail\PassReset;
 use App\Mail\PassResetConfirm;
 class loginController extends Controller
@@ -26,9 +27,13 @@ class loginController extends Controller
         }
     }
     public function passreset(Request $request){
-        Mail::to($request->mail)->send(new PassReset($request->mail,$request->mess)); //on mettre Mail::to('adressedesservicesgeneraux')
-        Mail::to($request->mail)->send(new PassResetConfirm($request->mail,$request->mess));
-        return redirect()->route('login');
+        if(User::where('email', '=', $request->mail)->count()==1){
+            Mail::to($request->mail)->send(new PassReset($request->mail,$request->mess)); //on mettre Mail::to('adressedesservicesgeneraux')
+            Mail::to($request->mail)->send(new PassResetConfirm($request->mail,$request->mess));
+            return redirect()->route('login');
+        } else{
+            return redirect()->route('login');
+        }
     }
     public function logout(){
        auth()->logout();

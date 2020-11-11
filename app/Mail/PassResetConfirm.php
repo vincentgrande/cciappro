@@ -31,6 +31,6 @@ class PassResetConfirm extends Mailable
     public function build()
     {
         return $this->subject('Confirmation demande de réinitialisation de mot de passe')
-                    ->view('pass.mdpresetconfirm'); 
+                    ->view('mail.mdpresetconfirm'); 
     }
 }

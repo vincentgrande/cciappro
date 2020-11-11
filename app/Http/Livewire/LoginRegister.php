@@ -32,7 +32,7 @@ class LoginRegister extends Component
             'loginUser' => 'required',
             'password' => 'required',
         ]);
-        if(\Auth::attempt(array('loginUser' => $this->loginUser, 'password' => $this->password))){
+        if(\Auth::attempt(array('loginUser' => strtoupper($this->loginUser), 'password' => $this->password))){
             $user = \Auth::user();
             if($user->isAdmin){
                 return redirect()->route('admin');
@@ -59,7 +59,7 @@ class LoginRegister extends Component
             'mail' => 'required',
             'mess' => 'required',
         ]);
-        return redirect()->route('mail', ['mail' =>$this->mail, 'mess'=> $this->mess]);
+            return redirect()->route('mail');
     }
     public function registerStore()
     {
@@ -74,7 +74,7 @@ class LoginRegister extends Component
 
         $this->password = Hash::make($this->password); 
 
-        User::create(['name' => $this->name,'firstname' => $this->firstname, 'email' => $this->email,'password' => $this->password, 'dptUser' => $this->dptUser, 'loginUser' => $this->loginUser, 'isAdmin' => $this->isAdmin]);
+        User::create(['name' => $this->name,'firstname' => $this->firstname, 'email' => $this->email,'password' => $this->password, 'dptUser' => $this->dptUser, 'loginUser' => strtoupper($this->loginUser), 'isAdmin' => $this->isAdmin]);
 
         session()->flash('message', 'Your register successfully Go to the login page.');
 
