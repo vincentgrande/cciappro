@@ -29,4 +29,18 @@ class CartController extends Controller
             'articles'=>unserialize($value),
         ]);
     }
+    //bug au delete d'un produit
+    public function delete(Request $request){
+        $user = Auth::user();
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);
+        $bool=False;
+        for($i=0; $i<count($cart);$i++){
+            if($cart[$i]['article']==$request->article and $bool==False){
+                array_splice($cart, $i);
+                $bool=True;
+            }
+        }
+    return redirect()->route('cart')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
+    }
 }
