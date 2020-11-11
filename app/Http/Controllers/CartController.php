@@ -7,9 +7,12 @@ use App\Produit;
 use App\typeProduit;
 use App\MarqueProduit;
 use App\Commande;
+use App\Mail\confirmationCommande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class CartController extends Controller
 {
@@ -64,6 +67,9 @@ class CartController extends Controller
             $commande->save();
         }
         $cookie = Cookie::forget(md5($user->loginUser));
+
+        Mail::to($user->email)->send(new confirmationCommande($user->name, $user->firstname, $cart));
+
         return redirect()->route('shop')->withCookie($cookie);
     }
 }
