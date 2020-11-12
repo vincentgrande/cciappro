@@ -31,6 +31,6 @@ class PassReset extends Mailable
     public function build()
     {
         return $this->subject('Demande de réinitialisation de mot de passe')
-                    ->view('pass.mdpreset'); 
+                    ->view('mail.mdpreset'); 
     }
 }
