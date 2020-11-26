@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\User;
 use App\Mail\PassReset;
 use App\Mail\PassResetConfirm;
+
 class loginController extends Controller
 {
     
