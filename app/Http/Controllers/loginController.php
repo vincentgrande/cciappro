@@ -62,18 +62,28 @@ class loginController extends Controller
 
     public function changePassword(Request $request){
         $user = Auth::user();
-
-        $oldPass = User::select("password") 
-               ->where('id', "=", $user->id)
-               ->where('loginUser', "=", $user->loginUser)
-               ->get();
+        $panier=0;
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        if(gettype($cart)=="array"){
+            for($i=0;$i<count($cart);$i++){
+                $panier=$panier+intval($cart[$i]['quantite']);
+            }
+        }
         $password = Hash::make($request->newPassTwo);
-        
+        if(Hash::check($request->oldPass, auth()->user()->password) && $request->newPassOne == $request->newPassTwo){
             User::where('id', "=", $user->id)
             ->where('loginUser', "=", $user->loginUser)
             ->update(['password' => $password]);
             return redirect()->route('shop');
-        
+        }else{
+            return view('param.parametres',[
+                'title'=>"Paramètres",
+                'user' => "$user->firstname ".strtoupper($user->name),
+                'panier'=>$panier,
+                'error' => "Ancien mot de passe érroné ou nouveau mot de passe érroné",
+            ]);
+        }
         
     }
 }

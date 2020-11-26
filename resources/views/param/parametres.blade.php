@@ -5,10 +5,16 @@
 @stop
 
 @section('content')
+<?php
+if(!isset($error)){
+    $error="";
+}
+?>
     <section class="dp-flex section-parametres">
         <h2 class="page-title">Changez votre mot de passe</h2>
         <form class="formulaire dp-block" id="form-co" method="post">
             {{ csrf_field() }}
+            <p style="color:red;">{{ $error }}</p>
             <label for="">Entrez votre ancien mot de passe :</label><br>
             <input class="input-form" type="password" name="oldPass"><br>
             <label for="">Entrez votre nouveau mot de passe :</label><br>
