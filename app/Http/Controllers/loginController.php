@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\User;
 use App\Mail\PassReset;
 use App\Mail\PassResetConfirm;
+
 class loginController extends Controller
 {
     
@@ -67,12 +68,12 @@ class loginController extends Controller
                ->where('loginUser', "=", $user->loginUser)
                ->get();
         $password = Hash::make($request->newPassTwo);
-        if($oldPass[0]["password"] == Hash::make($request->oldPass)/* && $request->newPassOne == $request->newPassTwo*/) {
+        
             User::where('id', "=", $user->id)
             ->where('loginUser', "=", $user->loginUser)
             ->update(['password' => $password]);
             return redirect()->route('shop');
-        }
+        
         
     }
 }
