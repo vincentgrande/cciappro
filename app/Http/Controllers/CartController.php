@@ -32,6 +32,7 @@ class CartController extends Controller
             'user' => "$user->firstname ".strtoupper($user->name),
             'panier'=>$panier,
             'articles'=>unserialize($value),
+            'cookiename' => md5($user->loginUser)
         ]);
     }
     //bug au delete d'un produit
@@ -42,8 +43,10 @@ class CartController extends Controller
         $bool = False;
         for($i=0; $i<count($cart);$i++){
             if($cart[$i]['article']==$request->article and $bool==False){
-                array_splice($cart, $i);
+              unset($cart[$i]);
+              $cart=array_values($cart);
                 $bool=True;
+                return redirect()->route('cart')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
             }
         }
     return redirect()->route('cart')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
@@ -74,6 +77,20 @@ class CartController extends Controller
             return redirect()->route('shop')->withCookie($cookie);
         }
         return redirect()->route('cart');
+    }
+    public function modifcart(Request $request){
+        $user = Auth::user();
+        $value = Cookie::get(md5($user->loginUser));
+        $article=$request->article;
+        $cart = unserialize($value); 
+        
+        for($i=0;$i<count($cart);$i++){
+            if($cart[$i]['article']==$request->article){
+                $cart[$i]['quantite']=intval($cart[$i]['quantite'])+1;
+                $bool = True;
+            }
+        }
+        return redirect()->route('cart')->cookie(md5($user->loginUser), serialize($cart), (time() + 2592000));
     }
 }
 

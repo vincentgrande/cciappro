@@ -5,7 +5,6 @@ function show(id){
 $(document).on("keypress", "input", function(e){
     if(e.which == 13){
         e.preventDefault();
-        console.log("cc");
-        alert(this.value);
+    // to do : affichage de la recherche utilisateur
     }
 });

@@ -2,6 +2,9 @@
 
 @section('style-js')
 <link rel="stylesheet" href="./CSS/cart.css">
+<script src="./JS/cart.js"></script>
+<script src="./JS/jquery.min.js"></script>
+
 @stop
 
 @section('content')
@@ -20,12 +23,16 @@
         <?php
         if($articles){
             for($i=0;$i<count($articles);$i++){
-
+                $id=$articles[$i]['idProduit'];
+                $onchange="updateCookie('".$id."')";
                     echo "  <tr>
                                 <td class='td-margin half-table dp-flex'><img class='img-product' src=".$articles[$i]['img']."><p>".$articles[$i]['article']."</p></td>
                                 <td class='td-margin quart-table'>
-                                <form action='' method='get'>
-                                <input type='number' value=".$articles[$i]['quantite'].">
+                                <form action='/modifcart' method='post' id='$id'>";?>
+                                {{ csrf_field() }}<?php 
+                                echo"
+                                <input type='number' onchange=$onchange  name='quantite' value=".$articles[$i]['quantite'].">
+                                <input type='text' value='".$articles[$i]['article']."' name='article' style='display:none;'>
                                 </form>
                                 </td>
                                 <td><form method='post'>";

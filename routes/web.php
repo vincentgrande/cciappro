@@ -21,6 +21,7 @@ Route::get('/user','UserController@index')->middleware('auth')->name('user');
 Route::get('/parametres','loginController@parametres')->middleware('auth')->name('parametres');
 Route::get('/parametresadmin','paramController@admin')->middleware('auth')->name('parametresadmin');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
+Route::post('/modifcart' , 'CartController@modifcart')->middleware('auth')->name('modifcart');
 Route::post('/login','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
 Route::post('/submit', 'CartController@commander')->middleware('auth')->name('commander');

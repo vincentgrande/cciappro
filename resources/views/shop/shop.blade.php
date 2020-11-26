@@ -50,6 +50,7 @@
                     echo"
                         <input class='center-bis btnpanier' type='submit' value='Ajouter au panier'>
                         <input class='center-bis' type='number' id='quantity' name='quantity' min='1' max='5' value='1'>
+                        <input type='text' value='$article->idProduit' name='idProduit' style='display:none'>
                         <input type='text' value='$article->nomProduit' name='article' style='display:none'>
                         <input type='text' value='$article->imgProduit' name='img' style='display:none'>
                     </form>
