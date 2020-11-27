@@ -131,74 +131,41 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td rowspan="3">1</td>
-                <td rowspan="3">Beltz Hervé</td>
-                <td>Colle UHU</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td>Ciseau</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td>Règle</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td rowspan="2">2</td>
-                <td rowspan="2">Beteta Stéphane</td>
-                <td>Masque chirurgical</td>
-                <td>50</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td>PC Windows 10</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td rowspan="3">3</td>
-                <td rowspan="3">Courcenet Sandra</td>
-                <td>Colle UHU</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-            </tr>
-            <tr>
-                <td>Règle</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-            </tr>
-            <tr>
-                <td>Surligneur</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:green;">Livré</td>
-            </tr>
-            <tr>
-                <td rowspan="2">4</td>
-                <td rowspan="2">Diemer Michel</td>
-                <td>Masque chirurgical</td>
-                <td>50</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-            </tr>
-            <tr>
-                <td>Ruban adhésif Scotch</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:green;">Livré</td>
-            </tr>
+        <?php
+            foreach($nbCommandes as $nbCommande){
+                echo "<tr>
+                    <td rowspan='3'>";
+                    $bool = False;
+                    foreach($commandes as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande && $bool == False){
+                            echo $commande->idCommande;
+                            $bool = True;
+                            echo "</td>
+                                  <td rowspan='3'>".$commande->user->name." ".$commande->user->firstname."</td>";
+                        }
+                    }
+                    echo"
+                    <td>Colle UHU</td>
+                    <td>1</td>
+                    <td>21/10/2020</td>
+                    <td style='background-color:red;'>En attente de validation</td>
+                </tr>
+                <tr>
+                    <td>Ciseau</td>
+                    <td>1</td>
+                    <td>21/10/2020</td>
+                    <td style='background-color:red;'>En attente de validation</td>
+                </tr>
+                <tr>
+                    <td>Règle</td>
+                    <td>1</td>
+                    <td>21/10/2020</td>
+                    <td style='background-color:red;'>En attente de validation</td>
+                </tr>";
+            }
+        ?>
+            
+            
         </tbody>
     </table>
 </section>
