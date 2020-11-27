@@ -12,63 +12,66 @@ class paramController extends Controller
 {
     public function admin(){
         $user = Auth::user();
-        $panier=0;
-        $value = Cookie::get(md5($user->loginUser));
-        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
-        if(gettype($cart)=="array"){
-            for($i=0;$i<count($cart);$i++){
-                $panier=$panier+intval($cart[$i]['quantite']);
-            }
-        }
         if($user->isAdmin){
+            $panier=0;
+            $value = Cookie::get(md5($user->loginUser));
+            $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+            if(gettype($cart)=="array"){
+                for($i=0;$i<count($cart);$i++){
+                    $panier=$panier+intval($cart[$i]['quantite']);
+                }
+            }
             return view('param.paramAdmin', [
-                "title"=>"Paramètres administrateur",
-                "panier"=>$panier,
-                "user" => "$user->firstname ".strtoupper($user->name),
-            ]);
+                    "title"=>"Paramètres administrateur",
+                    "panier"=>$panier,
+                    "user" => "$user->firstname ".strtoupper($user->name),
+                ]);
         }else{
             return redirect()->route('shop');
         }
-        
     }
 
     public function changePassword(Request $request){
-
         $user = Auth::user();
-        $panier=0;
-        $value = Cookie::get(md5($user->loginUser));
-        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
-        if(gettype($cart)=="array"){
-            for($i=0;$i<count($cart);$i++){
-                $panier=$panier+intval($cart[$i]['quantite']);
+        if($user->isAdmin){
+            $panier=0;
+            $value = Cookie::get(md5($user->loginUser));
+            $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+            if(gettype($cart)=="array"){
+                for($i=0;$i<count($cart);$i++){
+                    $panier=$panier+intval($cart[$i]['quantite']);
+                }
             }
+            $password = Hash::make($request->newMdpUser);
+            User::where('id', "=", $request->idUser)
+                ->where('name', "=", $request->nomUser)
+                ->where('firstname', "=", $request->prenomUser)
+                ->where('email', "=", $request->mailUser)
+                ->update(['password' => $password]);
+            return redirect()->route('parametresadmin');
+        }else{
+            return redirect()->route('shop');
         }
-        $password = Hash::make($request->newMdpUser);
-        
+    }
+    public function supprUser(Request $request){
+        $user = Auth::user();
+        if($user->isAdmin){
+            $panier=0;
+            $value = Cookie::get(md5($user->loginUser));
+            $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+            if(gettype($cart)=="array"){
+                for($i=0;$i<count($cart);$i++){
+                    $panier=$panier+intval($cart[$i]['quantite']);
+                }
+            }
             User::where('id', "=", $request->idUser)
             ->where('name', "=", $request->nomUser)
             ->where('firstname', "=", $request->prenomUser)
             ->where('email', "=", $request->mailUser)
-            ->update(['password' => $password]);
+            ->delete();
             return redirect()->route('parametresadmin');
-    }
-    public function supprUser(Request $request){
-
-        $user = Auth::user();
-        $panier=0;
-        $value = Cookie::get(md5($user->loginUser));
-        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
-        if(gettype($cart)=="array"){
-            for($i=0;$i<count($cart);$i++){
-                $panier=$panier+intval($cart[$i]['quantite']);
-            }
+        }else{
+            return redirect()->route('shop');
         }
-
-        User::where('id', "=", $request->idUser)
-        ->where('name', "=", $request->nomUser)
-        ->where('firstname', "=", $request->prenomUser)
-        ->where('email', "=", $request->mailUser)
-        ->delete();
-        return redirect()->route('parametresadmin');
     }
 }
