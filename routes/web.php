@@ -26,3 +26,4 @@ Route::post('/login','loginController@passreset')->name('mail');
 Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cookie');
 Route::post('/submit', 'CartController@commander')->middleware('auth')->name('commander');
 Route::post('/parametres','loginController@changePassword')->middleware('auth')->name('changePassword');
+Route::post('/modifUserPassword', 'paramController@changePassword')->middleware('auth')->name('modifMdp');
