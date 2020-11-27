@@ -25,6 +25,7 @@ class paramController extends Controller
                     "title"=>"Paramètres administrateur",
                     "panier"=>$panier,
                     "user" => "$user->firstname ".strtoupper($user->name),
+                    'admin' => $user->isAdmin,
                 ]);
         }else{
             return redirect()->route('shop');

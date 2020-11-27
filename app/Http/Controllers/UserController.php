@@ -26,6 +26,7 @@ class UserController extends Controller
             'panier'=>$panier,
             'commandes'=>Commande::where('idUser', '=', $user->id)->get(),
             'nbCommandes'=>Commande::select('idCommande')->where('idUser', '=', $user->id)->groupBy('commandes.idCommande')->get(),
+            'admin' => $user->isAdmin,
         ]);
  
         

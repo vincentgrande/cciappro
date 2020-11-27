@@ -23,6 +23,7 @@ class AdminController extends Controller
                 'title' => 'Administrateur',
                 'panier'=>$panier,
                 'user' => "$user->firstname ".strtoupper($user->name),
+                'admin' => $user->isAdmin,
             ]);
         }else{
             return redirect()->route('shop');

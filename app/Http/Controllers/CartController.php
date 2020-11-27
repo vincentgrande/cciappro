@@ -32,7 +32,8 @@ class CartController extends Controller
             'user' => "$user->firstname ".strtoupper($user->name),
             'panier'=>$panier,
             'articles'=>unserialize($value),
-            'cookiename' => md5($user->loginUser)
+            'cookiename' => md5($user->loginUser),
+            'admin' => $user->isAdmin,
         ]);
     }
     //bug au delete d'un produit

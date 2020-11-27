@@ -28,6 +28,7 @@ class ShopController extends Controller
             'marques' => MarqueProduit::all(),
             'types' => TypeProduit::all(),
             'panier'=>$panier,
+            'admin' => $user->isAdmin,
         ]);
     }
     public function createcookie(Request $request){

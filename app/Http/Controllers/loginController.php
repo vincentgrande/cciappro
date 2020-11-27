@@ -56,6 +56,7 @@ class loginController extends Controller
             'title'=>"Paramètres",
             'user' => "$user->firstname ".strtoupper($user->name),
             'panier'=>$panier,
+            'admin' => $user->isAdmin,
         ]);
 
     }
@@ -82,6 +83,7 @@ class loginController extends Controller
                 'user' => "$user->firstname ".strtoupper($user->name),
                 'panier'=>$panier,
                 'error' => "Ancien mot de passe érroné ou nouveau mot de passe érroné",
+                'admin' => $user->isAdmin,
             ]);
         }
         
