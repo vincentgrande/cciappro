@@ -6,18 +6,7 @@
 <link rel="stylesheet" href="./CSS/user.css">
 @stop
 @section ('content')
-<?php
 
-foreach($commandes as $commande){
-    echo "Login : ". $commande->user->loginUser;
-    echo '<br>';
-    echo "Produit : ".$commande->produit->nomProduit;
-    echo '<br>';
-    echo "Etat : ".$commande->etat->etat;
-    echo '<br>';
-}
-
-?>
 <section class="fin-section section-content">
     <table class="table-commande">
         <thead>
@@ -27,36 +16,64 @@ foreach($commandes as $commande){
         </thead>
         <tbody>
             <tr class="tr-statut">
-                <td class="td-margin half-table">Produit</td>
+                <td class="td-margin half-table">Produits</td>
                 <td class="td-margin quart-table">Date de commande</td>
                 <td class="quart-table">Statut</td>
                 <td class="min-table"></td>
             </tr>
-
             <?php
+           
                 foreach($nbCommandes as $nbCommande){
-                    echo '<tr class="tr-commande">
-                            <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
-                            <td class="td-margin quart-table">03/09/2020</td>
-                            <td class="quart-table livre">Livré</td>
-                            <td class="min-table"><i onclick="showInfoOne();" class="fas fa-angle-down"></i></td>
-                        </tr>';
-                    echo '<tr class="tr-info dp-none" id="order-one">
-                            <td class="">
-                                <p><img class="info-img" src="img/fluo.png" alt=""></p>
-                                <p><img class="info-img" src="img/cahier.png" alt=""></p>
-                                <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
-                                <p><img class="info-img" src="img/colle.png" alt=""></p>
-                            </td>';
+                    echo "<tr class='tr-commande'>
+                            <td class='td-margin half-table'>";
+                            foreach($commandes as $commande){
+                                if($commande->idCommande == $nbCommande->idCommande){
+                                    echo " ".$commande->quantite."x ".$commande->produit->nomProduit;
+                                    
+                                }
+                            }
+                            echo "</td><td class='td-margin quart-table'>";
+                            $bool=False;
+                            foreach($commandes as $commande){
+                                if($commande->idCommande == $nbCommande->idCommande && $bool==False){
+                                    echo $commande->dateCommande;
+                                    $bool=True;
+                                }
+                            }
+                            echo"</td>
+                            <td class='quart-table livre'>STATUT PAR ARTICLE</td>
+                            <td class='min-table'><i onclick='showInfo(".$nbCommande->idCommande.");' class='fas fa-angle-down'></i></td>
+                        </tr>";
+                    echo "<tr class='tr-info dp-none' id='".$nbCommande->idCommande."'>
+                            <td class=''>";
+                            foreach($commandes as $commande){
+                                if($commande->idCommande == $nbCommande->idCommande){
+                                    echo "<p><img class='info-img' src=".$commande->produit->imgProduit." alt=''></p>";
+                                }
+                            }
+                          
 
-                        echo '<td class="quart-table td-noauto">';
+                        echo '</td><td class="quart-table td-noauto">';
                         foreach($commandes as $commande){
-                            echo "<p class='info-txt'>".$commande->produit->nomProduit."</p>";
+                            if($commande->idCommande == $nbCommande->idCommande){
+                                echo "<p class='info-txt'>".$commande->produit->nomProduit."</p>";
+                            }
                         }
                         echo '</td>
                               <td class="min-table td-noauto">';       
                         foreach($commandes as $commande){
-                            echo "<p class='livre info-txt'>".$commande->etat->etat."</p>";
+                            if($commande->idCommande == $nbCommande->idCommande){
+                                echo "<p class='info-txt' style='"; 
+                                if($commande->etat->etat == "Livré"){
+                                    echo "color:green;";
+                                }else if($commande->etat->etat == "Refusé"){
+                                    echo "color:red;";
+                                }
+                                else if($commande->etat->etat == "En attente de validation" || $commande->etat->etat == "En cours livraison"){
+                                    echo "color:orange;";
+                                }
+                                echo"'>".$commande->etat->etat."</p>";
+                            }
                         }
                         echo '</td>
                               <td class="min-table"></td>';  
