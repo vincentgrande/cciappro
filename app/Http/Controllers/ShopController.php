@@ -45,6 +45,7 @@ class ShopController extends Controller
             }
             if($bool == False){
                 $cart[] = array(  
+                    'idProduit' => $request->idProduit,
                     'article'		=> $request->article,		
                     'quantite'		=> intval($request->quantity),	
                     'img' =>	$request->img,
@@ -52,6 +53,7 @@ class ShopController extends Controller
             }
         }else{
             $cart[] = array(  
+                'idProduit' => $request->idProduit,
                 'article'		=> $request->article,		
                 'quantite'		=> intval($request->quantity),	
                 'img' =>	$request->img,
