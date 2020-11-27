@@ -74,4 +74,26 @@ class paramController extends Controller
             return redirect()->route('shop');
         }
     }
+
+    public function modifUser(Request $request){
+        $user = Auth::user();
+        if($user->isAdmin){
+            $panier=0;
+            $value = Cookie::get(md5($user->loginUser));
+            $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+            if(gettype($cart)=="array"){
+                for($i=0;$i<count($cart);$i++){
+                    $panier=$panier+intval($cart[$i]['quantite']);
+                }
+            }
+            User::where('id', "=", $request->idUser)
+                ->where('name', "=", $request->nomUser)
+                ->where('firstname', "=", $request->prenomUser)
+                ->where('email', "=", $request->mailUser)
+                ->update(['isAdmin' => $request->isAdmin]);
+            return redirect()->route('parametresadmin');
+        }else{
+            return redirect()->route('shop');
+        }
+    }
 }

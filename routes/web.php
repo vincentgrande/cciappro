@@ -28,3 +28,4 @@ Route::post('/submit', 'CartController@commander')->middleware('auth')->name('co
 Route::post('/parametres','loginController@changePassword')->middleware('auth')->name('changePassword');
 Route::post('/modifUserPassword', 'paramController@changePassword')->middleware('auth')->name('modifMdp');
 Route::post('/supprUser','paramController@supprUser')->middleware('auth')->name('supprUser');
+Route::post('/modifUser','paramController@modifUser')->middleware('auth')->name('modifUser');

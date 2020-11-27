@@ -53,20 +53,22 @@
             </section>
             <section class="center admin" id="modifUser">
                 <h2 class="page-title">Modifier un utilisateur</h2>
-                <form class="formulaire dp-block" id="form-co">
+                <form class="formulaire dp-block" id="form-co" method="post" action="{{ route('modifUser') }}">
+                {{ csrf_field() }}
                     <label for="">ID Utilisateur :</label><br>
-                    <input class="input-form" type="number"><br>
+                    <input class="input-form" type="number" name="idUser"><br>
                     <label for="">Nom :</label><br>
-                    <input class="input-form" type="text"><br>
+                    <input class="input-form" type="text" name="nomUser"><br>
                     <label for="">Prénom :</label><br>
-                    <input class="input-form" type="text"><br>
+                    <input class="input-form" type="text" name="prenomUser"><br>
                     <label for="">Adresse mail :</label><br>
-                    <input class="input-form" type="mail"><br>
+                    <input class="input-form" type="mail" name="mailUser"><br>
                     <h3>Est administrateur ?</h3><br>
-                    <input type="radio" id="isAdmin" name="oui" value="oui">
-                    <label for="isAdmin">Oui</label><br>
-                    <input type="radio" id="isNotAdmin" name="non" value="non">
-                    <label for="isNotAdmin">non</label><br>
+                    <select name="isAdmin" id="isAdmin">
+                        <option value="">-- Choisir une option --</option>
+                        <option value="1">Oui</option>
+                        <option value="0">Non</option>
+                    </select><br>
                     <input class="btn-submit" type="submit" value="Modifier">
                 </form>
 </section>
