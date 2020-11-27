@@ -7,7 +7,7 @@
 @stop
 @section ('content')
 <?php
-/*
+
 foreach($commandes as $commande){
     echo "Login : ". $commande->user->loginUser;
     echo '<br>';
@@ -15,7 +15,7 @@ foreach($commandes as $commande){
     echo '<br>';
     echo "Etat : ".$commande->etat->etat;
     echo '<br>';
-}*/
+}
 
 ?>
 <section class="fin-section section-content">
@@ -33,88 +33,38 @@ foreach($commandes as $commande){
                 <td class="min-table"></td>
             </tr>
 
-            <tr class="tr-commande">
-                <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
-                <td class="td-margin quart-table">03/09/2020</td>
-                <td class="quart-table livre">Livré</td>
-                <td class="min-table"><i onclick="showInfoOne();" class="fas fa-angle-down"></i></td>
-            </tr>
-            <tr class="tr-info dp-none" id="order-one">
-                <td class="">
-                    <p><img class="info-img" src="img/fluo.png" alt=""></p>
-                    <p><img class="info-img" src="img/cahier.png" alt=""></p>
-                    <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
-                    <p><img class="info-img" src="img/colle.png" alt=""></p>
-                </td>
-                <td class="quart-table td-noauto">
-                    <p class="info-txt ">2x Fluo</p>
-                    <p class="info-txt ">4x Cahier</p>
-                    <p class="info-txt ">1x Ciseaux</p>
-                    <p class="info-txt ">6x Colle</p>
-                </td>
-                <td class="min-table td-noauto">
-                    <p class="livre info-txt">Livré</p>
-                    <p class="livre info-txt">Livré</p>
-                    <p class="livre info-txt">Livré</p>
-                    <p class="livre info-txt">Livré</p>
-                </td>
-                <td class="min-table"></td>
-            </tr>
+            <?php
+                foreach($nbCommandes as $nbCommande){
+                    echo '<tr class="tr-commande">
+                            <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
+                            <td class="td-margin quart-table">03/09/2020</td>
+                            <td class="quart-table livre">Livré</td>
+                            <td class="min-table"><i onclick="showInfoOne();" class="fas fa-angle-down"></i></td>
+                        </tr>';
+                    echo '<tr class="tr-info dp-none" id="order-one">
+                            <td class="">
+                                <p><img class="info-img" src="img/fluo.png" alt=""></p>
+                                <p><img class="info-img" src="img/cahier.png" alt=""></p>
+                                <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
+                                <p><img class="info-img" src="img/colle.png" alt=""></p>
+                            </td>';
 
-            <tr class="tr-commande">
-                <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
-                <td class="td-margin quart-table">03/09/2020</td>
-                <td class="quart-table en-cours">En cours de livraison</td>
-                <td class="min-table"><i onclick="showInfoTwo();" class="fas fa-angle-down"></i></td>
-            </tr>
-            <tr class="tr-info dp-none" id="order-two">
-                <td class="">
-                    <p><img class="info-img" src="img/fluo.png" alt=""></p>
-                    <p><img class="info-img" src="img/cahier.png" alt=""></p>
-                    <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
-                    <p><img class="info-img" src="img/colle.png" alt=""></p>
-                </td>
-                <td class="quart-table td-noauto">
-                    <p class="info-txt ">2x Fluo</p>
-                    <p class="info-txt ">4x Cahier</p>
-                    <p class="info-txt ">1x Ciseaux</p>
-                    <p class="info-txt ">6x Colle</p>
-                </td>
-                <td class="min-table td-noauto">
-                    <p class="livre info-txt">Livré</p>
-                    <p class="en-cours info-txt">En cours de<br>livraison</p>
-                    <p class="livre info-txt">Livré</p>
-                    <p class="en-cours info-txt">En cours de<br>livraison</p>
-                </td>
-                <td class="min-table"></td>
-            </tr>
+                        echo '<td class="quart-table td-noauto">';
+                        foreach($commandes as $commande){
+                            echo "<p class='info-txt'>".$commande->produit->nomProduit."</p>";
+                        }
+                        echo '</td>
+                              <td class="min-table td-noauto">';       
+                        foreach($commandes as $commande){
+                            echo "<p class='livre info-txt'>".$commande->etat->etat."</p>";
+                        }
+                        echo '</td>
+                              <td class="min-table"></td>';  
+                }
+                    
 
-            <tr class="tr-commande">
-                <td class="td-margin half-table">Fluo 2x, cahier 4x, ciseaux 1x,<br>colle 6x</td>
-                <td class="td-margin quart-table">03/09/2020</td>
-                <td class="quart-table refuse">Refusé</td>
-                <td class="min-table"><i onclick="showInfoThree();" class="fas fa-angle-down"></i></td>
-            </tr>
-            <tr class="tr-info dp-none" id="order-three">
-                <td class="">
-                    <p><img class="info-img" src="img/fluo.png" alt=""></p>
-                    <p><img class="info-img" src="img/cahier.png" alt=""></p>
-                    <p><img class="info-img" src="img/ciseaux.png" alt=""></p>
-                    <p><img class="info-img" src="img/colle.png" alt=""></p>
-                </td>
-                <td class="quart-table td-noauto">
-                    <p class="info-txt ">2x Fluo</p>
-                    <p class="info-txt ">4x Cahier</p>
-                    <p class="info-txt ">1x Ciseaux</p>
-                    <p class="info-txt ">6x Colle</p>
-                </td>
-                <td class="min-table td-noauto">
-                    <p class="refuse info-txt">Refusé</p>
-                    <p class="refuse info-txt">Refusé</p>
-                    <p class="refuse info-txt">Refusé</p>
-                    <p class="refuse info-txt">Refusé</p>
-                </td>
-                <td class="min-table"></td>
+            ?>
+               
             </tr>
         </tbody>
     </table>
