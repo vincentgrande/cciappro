@@ -28,7 +28,7 @@
                     echo "  <tr>
                                 <td class='td-margin half-table dp-flex'><img class='img-product' src=".$articles[$i]['img']."><p>".$articles[$i]['article']."</p></td>
                                 <td class='td-margin quart-table'>
-                                <form actiort' n='/modifcamethod='post' id='$id'>";?>
+                                <form action='/modifcart' method='post' id='$id'>";?>
                                 {{ csrf_field() }}<?php 
                                 echo"
                                 <input type='number' onchange=$onchange  name='quantite' value=".$articles[$i]['quantite'].">
