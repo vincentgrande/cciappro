@@ -27,3 +27,4 @@ Route::post('/', 'ShopController@createcookie')->middleware('auth')->name('cooki
 Route::post('/submit', 'CartController@commander')->middleware('auth')->name('commander');
 Route::post('/parametres','loginController@changePassword')->middleware('auth')->name('changePassword');
 Route::post('/modifUserPassword', 'paramController@changePassword')->middleware('auth')->name('modifMdp');
+Route::post('/supprUser','paramController@supprUser')->middleware('auth')->name('supprUser');
