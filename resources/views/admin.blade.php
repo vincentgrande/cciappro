@@ -227,7 +227,7 @@
                 <td>HBELTZ</td>
                 <td>hbeltz@ccicampus.fr</td>
                 <td>Math</td>
-                <td><a href="adminparam.html"><button>Modifier</button></a></td>
+                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
             </tr>
             <tr>
                 <td>2</td>
@@ -236,7 +236,7 @@
                 <td>MDIEMER</td>
                 <td>mdiemer@ccicampus.fr</td>
                 <td>PHP</td>
-                <td><a href="adminparam.html"><button>Modifier</button></a></td>
+                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
             </tr>
             <tr>
                 <td>3</td>
@@ -245,7 +245,7 @@
                 <td>SCOURCENET</td>
                 <td>scourcenet@ccicampus.fr</td>
                 <td>Droit</td>
-                <td><a href="adminparam.html"><button>Modifier</button></a></td>
+                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
             </tr>
             <tr>
                 <td>4</td>
@@ -254,7 +254,7 @@
                 <td>SBETETA</td>
                 <td>sbeteta@ccicampus.fr</td>
                 <td>Lémurien</td>
-                <td><a href="adminparam.html"><button>Modifier</button></a></td>
+                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
             </tr>
         </tbody>
     </table>

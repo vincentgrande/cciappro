@@ -22,6 +22,7 @@
             <section class="center admin" id="modifMdp">
                 <h2 class="page-title">Changer un mot de passe</h2>
                 <form class="formulaire dp-block" id="form-co" method="POST" action="{{route('modifMdp')}}">
+                {{ csrf_field() }}
                     <label for="">ID Utilisateur :</label><br>
                     <input class="input-form" type="number" name="idUser"><br>
                     <label for="">Nom :</label><br>

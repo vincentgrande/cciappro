@@ -86,7 +86,7 @@ class CartController extends Controller
         
         for($i=0;$i<count($cart);$i++){
             if($cart[$i]['article']==$request->article){
-                $cart[$i]['quantite']=intval($cart[$i]['quantite'])+1;
+                $cart[$i]['quantite']=intval($cart[$i]['quantite'])+1; // différence et pas +1
                 $bool = True;
             }
         }

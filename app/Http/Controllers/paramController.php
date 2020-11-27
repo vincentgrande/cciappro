@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cookie;
-
+use Hash;
+use App\User;
 class paramController extends Controller
 {
     public function admin(){
