@@ -132,36 +132,45 @@
         </thead>
         <tbody>
         <?php
+        
+        
             foreach($nbCommandes as $nbCommande){
+                $count=0;
+                foreach($commandes as $commande){
+                    if($nbCommande->idCommande == $commande->idCommande ){
+                        $count=$count+1;
+                    }}
                 echo "<tr>
-                    <td rowspan='3'>";
+                    <td rowspan='".$count."'>";
                     $bool = False;
                     foreach($commandes as $commande){
                         if($nbCommande->idCommande == $commande->idCommande && $bool == False){
                             echo $commande->idCommande;
                             $bool = True;
                             echo "</td>
-                                  <td rowspan='3'>".$commande->user->name." ".$commande->user->firstname."</td>";
+                                  <td rowspan='".$count."'>".$commande->user->name." ".$commande->user->firstname."</td>";
                         }
                     }
-                    echo"
-                    <td>Colle UHU</td>
-                    <td>1</td>
-                    <td>21/10/2020</td>
-                    <td style='background-color:red;'>En attente de validation</td>
-                </tr>
-                <tr>
-                    <td>Ciseau</td>
-                    <td>1</td>
-                    <td>21/10/2020</td>
-                    <td style='background-color:red;'>En attente de validation</td>
-                </tr>
-                <tr>
-                    <td>Règle</td>
-                    <td>1</td>
-                    <td>21/10/2020</td>
-                    <td style='background-color:red;'>En attente de validation</td>
-                </tr>";
+                    foreach($commandes as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande ){
+                            echo"
+                            <td>".$commande->produit->nomProduit."</td>
+                            <td>".$commande->quantite."</td>
+                            <td>".$commande->dateCommande."</td>
+                            <td style='background-color:";
+                            if($commande->etat->etat == "Livré"){
+                                echo "green";
+                            }else if($commande->etat->etat == "Refusé"){
+                                echo "red";
+                            }
+                            else if($commande->etat->etat == "En attente de validation" || $commande->etat->etat == "En cours livraison"){
+                                echo "orange";
+                            }
+                            echo ";'>".$commande->etat->etat."</td>
+                        </tr>";
+                        }
+                    }
+                   
             }
         ?>
             
