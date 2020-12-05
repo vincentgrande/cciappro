@@ -68,9 +68,7 @@
                             echo ";'>".$commande->etat->etat."</td>";
                             echo"</tr>";
                         }
-                        
-                    }
-                    
+                    }    
             }
         ?>
         </tbody>
@@ -90,32 +88,42 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td rowspan="2">3</td>
-                <td rowspan="2">Courcenet Sandra</td>
-                <td>Colle UHU</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-                <td><button>Auditer la livraison</button></td>
-            </tr>
-            <tr>
-                <td>Règle</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-                <td><button>Auditer la livraison</button></td>
-            </tr>
-            <tr>
-                <td rowspan="1">4</td>
-                <td rowspan="1">Diemer Michel</td>
-                <td>Masque chirurgical</td>
-                <td>50</td>
-                <td>21/10/2020</td>
-                <td style="background-color:orange;">En attente de livraison</td>
-                <td><button>Auditer la livraison</button></td>
-            </tr>
-
+        <?php
+        foreach($nbAttenteLivraison as $nbCommande){
+                $count=0;
+                echo "<tr>";
+                foreach($attenteLivraison as $commande){
+                    if($nbCommande->idCommande == $commande->idCommande ){
+                        $count=$count+1;
+                    }}
+                    echo"
+                    <td rowspan='".$count."'>";
+                    $bool = False;
+                    foreach($attenteLivraison as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande && $bool == False){
+                            echo $commande->idCommande;
+                            $bool = True;
+                            echo "</td>
+                                  <td rowspan='".$count."'>".$commande->user->name." ".$commande->user->firstname."</td>";
+                        }
+                    }
+                    foreach($attenteLivraison as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande ){
+                            echo"
+                            <td>".$commande->produit->nomProduit."</td>
+                            <td>".$commande->quantite."</td>
+                            <td>".$commande->dateCommande."</td>
+                            <td style='background-color:";
+                            if($commande->etat->etat == "En attente de validation" || $commande->etat->etat == "En cours livraison"){
+                                echo "orange";
+                            }
+                            echo ";'>".$commande->etat->etat."</td>";
+                            echo" <td><button>OK</button></td>";
+                            echo"</tr>";
+                        }
+                    }    
+            }
+            ?>
         </tbody>
     </table>
 </section>

@@ -30,6 +30,8 @@ class AdminController extends Controller
                 'allusers' => User::all(),
                 'attenteValid' => Commande::select('*')->where('idEtat','1')->get(),
                 'nbAttenteValid' => Commande::select('idCommande')->where('idEtat','1')->groupBy('commandes.idCommande')->get(),
+                'attenteLivraison' => Commande::select('*')->where('idEtat','2')->get(),
+                'nbAttenteLivraison' => Commande::select('idCommande')->where('idEtat','2')->groupBy('commandes.idCommande')->get(),
 
             ]);
         }else{
