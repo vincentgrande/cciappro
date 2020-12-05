@@ -25,13 +25,13 @@
     <table>
         <thead>
             <tr>
-                <td>Validation</td>
                 <td>ID commande</td>
                 <td>Demandeur</td>
                 <td>Articles</td>
                 <td>Quantité</td>
                 <td>Date de commande</td>
                 <td>Statut commande</td>
+                <td>Validation</td>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,6 @@
                         $count=$count+1;
                     }}
                 echo "<tr>";
-                echo" <td rowspan='".$count."'><button>OK</button></td>";
                     echo"
                     <td rowspan='".$count."'>";
                     $bool = False;
@@ -55,6 +54,7 @@
                                   <td rowspan='".$count."'>".$commande->user->name." ".$commande->user->firstname."</td>";
                         }
                     }
+                    $test=False;
                     foreach($attenteValid as $commande){
                         if($nbCommande->idCommande == $commande->idCommande ){
                             echo"
@@ -66,9 +66,16 @@
                                 echo "red";
                             }
                             echo ";'>".$commande->etat->etat."</td>";
+                            if ($test == False)
+                            {
+                                $test=True;
+                                echo" <td rowspan='".$count."'><button>OK</button></td>";   
+                            }
                             echo"</tr>";
                         }
-                    }    
+                    } 
+                   
+                   
             }
         ?>
         </tbody>
