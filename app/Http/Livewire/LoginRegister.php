@@ -76,7 +76,7 @@ class LoginRegister extends Component
 
         $this->password = Hash::make($this->password); 
 
-        User::create(['name' => $this->name,'firstname' => $this->firstname, 'email' => $this->email,'password' => $this->password, 'dptUser' => $this->dptUser, 'loginUser' => strtoupper($this->loginUser), 'isAdmin' => $this->isAdmin]);
+        User::create(['name' => $this->name,'firstname' => $this->firstname, 'email' => $this->email,'password' => $this->password, 'dptUser' => $this->dptUser, 'loginUser' => strtoupper($this->loginUser), 'isAdmin' => 0]);
 
         Mail::to($this->email)->send(new registerMail($this->name, $this->firstname));
 

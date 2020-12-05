@@ -69,7 +69,7 @@
                             if ($test == False)
                             {
                                 $test=True;
-                                echo" <td rowspan='".$count."'><button>OK</button></td>";   
+                                echo" <td rowspan='".$count."'><button>Valider la commande</button><button>Refuser la commande</button></td>";   
                             }
                             echo"</tr>";
                         }
@@ -125,7 +125,7 @@
                                 echo "orange";
                             }
                             echo ";'>".$commande->etat->etat."</td>";
-                            echo" <td><button>OK</button></td>";
+                            echo" <td><button>Auditer la livraison</button></td>";
                             echo"</tr>";
                         }
                     }    

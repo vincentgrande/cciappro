@@ -28,11 +28,7 @@
             </select>
             <label>Identifiant :</label>
             <input type="text" wire:model="loginUser" class="input-form">
-            <label>Est administrateur :</label>
-            <select class="input-form" name="isAdmin" wire:model="isAdmin">
-                        <option value="0">N'est pas admin</option>
-                        <option value="1">Est admin</option>
-            </select>
+            
             <button class="btn-submit" wire:click.prevent="registerStore">S'inscrire</button>
         </form>     
         @if (session()->has('message'))
