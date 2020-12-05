@@ -20,6 +20,7 @@ Route::get('/cart','CartController@index')->middleware('auth')->name('cart');
 Route::get('/user','UserController@index')->middleware('auth')->name('user');
 Route::get('/parametres','loginController@parametres')->middleware('auth')->name('parametres');
 Route::get('/parametresadmin','paramController@admin')->middleware('auth')->name('parametresadmin');
+Route::get('/parametresadmin&{id}&{name}&{firstname}&{mail}','paramController@adminWithParametres')->middleware('auth')->name('parametresadminparam');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
 Route::post('/modifcart' , 'CartController@modifcart')->middleware('auth')->name('modifcart');
 Route::post('/login','loginController@passreset')->name('mail');

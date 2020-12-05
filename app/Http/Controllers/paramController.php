@@ -31,6 +31,31 @@ class paramController extends Controller
             return redirect()->route('shop');
         }
     }
+    public function adminWithParametres($id, $name, $firstname, $mail){
+        $user = Auth::user();
+        if($user->isAdmin){
+            $panier=0;
+            $value = Cookie::get(md5($user->loginUser));
+            $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+            if(gettype($cart)=="array"){
+                for($i=0;$i<count($cart);$i++){
+                    $panier=$panier+intval($cart[$i]['quantite']);
+                }
+            }
+            return view('param.paramAdmin', [
+                    "title"=>"Paramètres administrateur",
+                    "panier"=>$panier,
+                    "user" => "$user->firstname ".strtoupper($user->name),
+                    'admin' => $user->isAdmin,
+                    'id' => $id,
+                    'name' => $name,
+                    'firstname' => $firstname,
+                    'mail' => $mail,
+                ]);
+        }else{
+            return redirect()->route('shop');
+        }
+    }
 
     public function changePassword(Request $request){
         $user = Auth::user();

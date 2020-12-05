@@ -8,6 +8,20 @@
 @stop
 
 @section('content')
+<?php
+if(!isset($id)){
+    $id="";
+}
+if (!isset($name)){
+    $name="";
+}
+if (!isset($firstname)){
+    $firstname=""; 
+}
+if (!isset($mail)){
+    $mail="";
+}
+?>
 <section class="div-third center nav2">
                 <div class="div-btn">
                     <button class="btn" onclick="show('modifMdp');">Modifier un mot de passe</button>
@@ -24,13 +38,13 @@
                 <form class="formulaire dp-block" id="form-co" method="POST" action="{{route('modifMdp')}}">
                 {{ csrf_field() }}
                     <label for="">ID Utilisateur :</label><br>
-                    <input class="input-form" type="number" name="idUser"><br>
+                    <input class="input-form" type="number" name="idUser" value="{{ $id }}"><br>
                     <label for="">Nom :</label><br>
-                    <input class="input-form" type="text" name="nomUser"><br>
+                    <input class="input-form" type="text" name="nomUser" value="{{ $name }}"><br>
                     <label for="">Prénom :</label><br>
-                    <input class="input-form" type="text" name="prenomUser"><br>
+                    <input class="input-form" type="text" name="prenomUser" value="{{ $firstname }}"><br>
                     <label for="">Adresse mail :</label><br>
-                    <input class="input-form" type="mail" name="mailUser"><br>
+                    <input class="input-form" type="mail" name="mailUser" value="{{ $mail }}"><br>
                     <label for="">Entrez le nouveau mot de passe :</label><br>
                     <input class="input-form" type="password" name="newMdpUser"><br>
                     <input class="btn-submit" type="submit" value="Modifier">
@@ -41,13 +55,13 @@
                 <form class="formulaire dp-block" id="form-co" method="POST" action="{{route('supprUser')}}">
                 {{ csrf_field() }}
                     <label for="">ID Utilisateur :</label><br>
-                    <input class="input-form" type="number" name="idUser"><br>
+                    <input class="input-form" type="number" name="idUser"  value="{{ $id }}"><br>
                     <label for="">Nom :</label><br>
-                    <input class="input-form" type="text" name="nomUser"><br>
+                    <input class="input-form" type="text" name="nomUser"  value="{{ $name }}"><br>
                     <label for="">Prénom :</label><br>
-                    <input class="input-form" type="text" name="prenomUser"><br>
+                    <input class="input-form" type="text" name="prenomUser" value="{{ $firstname }}"><br>
                     <label for="">Adresse mail :</label><br>
-                    <input class="input-form" type="mail" name="mailUser"><br>
+                    <input class="input-form" type="mail" name="mailUser" value="{{ $mail }}"><br>
                     <input class="btn-submit" type="submit" value="Supprimer">
                 </form>
             </section>
@@ -56,13 +70,13 @@
                 <form class="formulaire dp-block" id="form-co" method="post" action="{{ route('modifUser') }}">
                 {{ csrf_field() }}
                     <label for="">ID Utilisateur :</label><br>
-                    <input class="input-form" type="number" name="idUser"><br>
+                    <input class="input-form" type="number" name="idUser" value="{{ $id }}"><br>
                     <label for="">Nom :</label><br>
-                    <input class="input-form" type="text" name="nomUser"><br>
+                    <input class="input-form" type="text" name="nomUser" value="{{ $name }}"><br>
                     <label for="">Prénom :</label><br>
-                    <input class="input-form" type="text" name="prenomUser"><br>
+                    <input class="input-form" type="text" name="prenomUser" value="{{ $firstname }}"><br>
                     <label for="">Adresse mail :</label><br>
-                    <input class="input-form" type="mail" name="mailUser"><br>
+                    <input class="input-form" type="mail" name="mailUser" value="{{ $mail }}"><br>
                     <h3>Est administrateur ?</h3><br>
                     <select name="isAdmin" id="isAdmin">
                         <option value="">-- Choisir une option --</option>

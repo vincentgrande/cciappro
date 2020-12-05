@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Commande;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -26,6 +27,7 @@ class AdminController extends Controller
                 'admin' => $user->isAdmin,
                 'commandes'=>Commande::all(),
                 'nbCommandes'=>Commande::select('idCommande')->groupBy('commandes.idCommande')->get(),
+                'allusers' => User::all(),
             ]);
         }else{
             return redirect()->route('shop');

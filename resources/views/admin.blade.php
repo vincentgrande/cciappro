@@ -192,46 +192,29 @@
                 <td>Nom d'utilisateur</td>
                 <td>Mail</td>
                 <td>Département</td>
+                <td>Est admin</td>
                 <td>Modifications</td>
             </tr>
         </thead>
         <tbody>
+
+        <?php 
+
+        foreach($allusers as $userlist){
+            echo "
             <tr>
-                <td>1</td>
-                <td>Beltz</td>
-                <td>Hervé</td>
-                <td>HBELTZ</td>
-                <td>hbeltz@ccicampus.fr</td>
-                <td>Math</td>
-                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Diemer</td>
-                <td>Michel</td>
-                <td>MDIEMER</td>
-                <td>mdiemer@ccicampus.fr</td>
-                <td>PHP</td>
-                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Courcenet</td>
-                <td>Sandra</td>
-                <td>SCOURCENET</td>
-                <td>scourcenet@ccicampus.fr</td>
-                <td>Droit</td>
-                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Beteta</td>
-                <td>Stéphane</td>
-                <td>SBETETA</td>
-                <td>sbeteta@ccicampus.fr</td>
-                <td>Lémurien</td>
-                <td><a href="{{ route('parametresadmin') }}"><button>Modifier</button></a></td>
-            </tr>
+                <td>".$userlist->id."</td>
+                <td>".$userlist->name."</td>
+                <td>".$userlist->firstname."</td>
+                <td>".$userlist->loginUser."</td>
+                <td>".$userlist->email."</td>
+                <td>".$userlist->dptUser."</td>
+                <td>".$userlist->isAdmin."</td>
+                <td><a href='/parametresadmin&".$userlist->id."&".$userlist->name."&".$userlist->firstname."&".$userlist->email."'><button>Modifier</button></a></td>
+            </tr>";
+        }
+        
+        ?>
         </tbody>
     </table>
 </section>
