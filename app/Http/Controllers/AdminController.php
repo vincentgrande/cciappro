@@ -28,6 +28,9 @@ class AdminController extends Controller
                 'commandes'=>Commande::all(),
                 'nbCommandes'=>Commande::select('idCommande')->groupBy('commandes.idCommande')->get(),
                 'allusers' => User::all(),
+                'attenteValid' => Commande::select('*')->where('idEtat','1')->get(),
+                'nbAttenteValid' => Commande::select('idCommande')->where('idEtat','1')->groupBy('commandes.idCommande')->get(),
+
             ]);
         }else{
             return redirect()->route('shop');

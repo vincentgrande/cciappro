@@ -25,52 +25,54 @@
     <table>
         <thead>
             <tr>
+                <td>Validation</td>
                 <td>ID commande</td>
                 <td>Demandeur</td>
                 <td>Articles</td>
                 <td>Quantité</td>
                 <td>Date de commande</td>
                 <td>Statut commande</td>
-                <td>Validation</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td rowspan="3">1</td>
-                <td rowspan="3">Beltz Hervé</td>
-                <td>Colle UHU</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-                <td rowspan="3"><button>Valider la demande</button></td>
-            </tr>
-            <tr>
-                <td>Ciseau</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td>Règle</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
-            <tr>
-                <td rowspan="2">2</td>
-                <td rowspan="2">Beteta Stéphane</td>
-                <td>Masque chirurgical</td>
-                <td>50</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-                <td rowspan="3"><button>Valider la demande</button></td>
-            </tr>
-            <tr>
-                <td>PC Windows 10</td>
-                <td>1</td>
-                <td>21/10/2020</td>
-                <td style="background-color:red;">En attente de validation</td>
-            </tr>
+        <?php
+            foreach($nbAttenteValid as $nbCommande){
+                $count=0;
+                foreach($attenteValid as $commande){
+                    if($nbCommande->idCommande == $commande->idCommande ){
+                        $count=$count+1;
+                    }}
+                echo "<tr>";
+                echo" <td rowspan='".$count."'><button>OK</button></td>";
+                    echo"
+                    <td rowspan='".$count."'>";
+                    $bool = False;
+                    foreach($attenteValid as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande && $bool == False){
+                            echo $commande->idCommande;
+                            $bool = True;
+                            echo "</td>
+                                  <td rowspan='".$count."'>".$commande->user->name." ".$commande->user->firstname."</td>";
+                        }
+                    }
+                    foreach($attenteValid as $commande){
+                        if($nbCommande->idCommande == $commande->idCommande ){
+                            echo"
+                            <td>".$commande->produit->nomProduit."</td>
+                            <td>".$commande->quantite."</td>
+                            <td>".$commande->dateCommande."</td>
+                            <td style='background-color:";
+                            if($commande->etat->etat == "En attente de validation" || $commande->etat->etat == "En cours livraison"){
+                                echo "red";
+                            }
+                            echo ";'>".$commande->etat->etat."</td>";
+                            echo"</tr>";
+                        }
+                        
+                    }
+                    
+            }
+        ?>
         </tbody>
     </table>
 </section>
@@ -132,8 +134,6 @@
         </thead>
         <tbody>
         <?php
-        
-        
             foreach($nbCommandes as $nbCommande){
                 $count=0;
                 foreach($commandes as $commande){
