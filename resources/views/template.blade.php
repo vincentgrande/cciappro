@@ -32,6 +32,7 @@
                     <p class="menuDrop"><a href="{{ route('parametres') }}">Paramètres utilisateur</a></p>
                     @if($admin == 1)
                     <p class="menuDrop"><a href="{{ route('admin') }}">Gestion administrateur</a></p>
+                    <p class="menuDrop"><a href="{{ route('gestionStock') }}">Gestion des stocks</a></p>
                     <p class="menuDrop"><a href="{{ route('parametresadmin') }}">Paramètres administrateur</a></p>
                     @endif
                     <p class="menuDrop"><a href="{{ route('logout') }}">Déconnexion</a></p>

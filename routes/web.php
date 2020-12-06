@@ -21,6 +21,7 @@ Route::get('/user','UserController@index')->middleware('auth')->name('user');
 Route::get('/parametres','loginController@parametres')->middleware('auth')->name('parametres');
 Route::get('/parametresadmin','paramController@admin')->middleware('auth')->name('parametresadmin');
 Route::get('/parametresadmin&{id}&{name}&{firstname}&{mail}','paramController@adminWithParametres')->middleware('auth')->name('parametresadminparam');
+Route::get('/gestiondesstocks','AdminController@gestionstock')->middleware('auth')->name('gestionStock');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
 Route::post('/modifcart' , 'CartController@modifcart')->middleware('auth')->name('modifcart');
 Route::post('/login','loginController@passreset')->name('mail');
@@ -33,5 +34,8 @@ Route::post('/modifUser','paramController@modifUser')->middleware('auth')->name(
 Route::post('/admin','AdminController@valideCommande')->middleware('auth')->name('valideCommande');
 Route::post('/admin2','AdminController@auditerLivraison')->middleware('auth')->name('auditerLivraison');
 Route::post('/admin3','AdminController@refuserCommande')->middleware('auth')->name('refuserCommande');
+Route::post('/modifierQqtProduit','AdminController@modifierQqtProduit')->middleware('auth')->name('modifierQqtProduit');
+Route::post('/supprimerProduit','AdminController@supprimerProduit')->middleware('auth')->name('supprimerProduit');
+
 
 

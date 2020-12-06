@@ -81,4 +81,55 @@ class AdminController extends Controller
         }
         
     }
+    public function gestionstock(){
+        $user = Auth::user();
+        $panier=0;
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        if(gettype($cart)=="array"){
+            for($i=0;$i<count($cart);$i++){
+                $panier=$panier+intval($cart[$i]['quantite']);
+            }
+        }
+        if($user->isAdmin){
+            return view('gestionstock',[
+                'title' => 'Gestion des stocks',
+                'panier'=>$panier,
+                'user' => "$user->firstname ".strtoupper($user->name),
+                'admin' => $user->isAdmin,
+                'produits' => Produit::all(),
+            ]);
+        }else{
+            return redirect()->route('shop');
+        }
+        
+    }
+    public function modifierQqtProduit(Request $request){
+        $user = Auth::user();
+        
+        if($user->isAdmin){
+            $qqt = Produit::select('stockProduit')->where('idProduit', '=', intval($request->idProduit))->get();
+            foreach($qqt as $quantite){
+                $qqt=intval($quantite->stockProduit)+$request->quantite;
+            }
+            Produit::where('idProduit','=', intval($request->idProduit))->update(['produits.stockProduit'=>$qqt]);
+            return redirect()->route('gestionStock');
+        }else{
+            return redirect()->route('shop');
+        }
+        
+    }
+    public function supprimerProduit(Request $request){
+        $user = Auth::user();
+        
+        if($user->isAdmin){
+            
+            Produit::where('idProduit','=', intval($request->idProduit))->delete();
+            return redirect()->route('gestionStock');
+        }else{
+            return redirect()->route('shop');
+        }
+        
+    }
+   
 }
