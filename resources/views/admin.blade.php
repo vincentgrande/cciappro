@@ -69,7 +69,21 @@
                             if ($test == False)
                             {
                                 $test=True;
-                                echo" <td rowspan='".$count."'><button>Valider la commande</button><button>Refuser la commande</button></td>";   
+                                echo "<td rowspan='".$count."'>";
+                                echo "
+                                <form method='post'>";
+                                ?>{{ csrf_field() }}<?php 
+                                echo"
+                                    <input type='submit' value='Valider la commande'></input>
+                                    <input type='text' value='$commande->idCommande' name='idCommande' style='display:none'>
+                                </form>";
+                                echo "
+                                <form method='post' action='/admin3'>";
+                                ?>{{ csrf_field() }}<?php 
+                                echo"
+                                    <input type='submit' value='Refuser la commande'></input>
+                                    <input type='text' value='$commande->idCommande' name='idCommande' style='display:none'>
+                                </form></td>";   
                             }
                             echo"</tr>";
                         }
@@ -125,7 +139,16 @@
                                 echo "orange";
                             }
                             echo ";'>".$commande->etat->etat."</td>";
-                            echo" <td><button>Auditer la livraison</button></td>";
+                            echo" <td>";
+                            echo "
+                                <form method='post' action='/admin2'>";
+                                ?>{{ csrf_field() }}<?php 
+                                echo"
+                                    <input type='submit' value='Auditer la livraison'></input>
+                                    <input type='text' value='$commande->id' name='id' style='display:none'>
+                                    <input type='text' value='".$commande->produit->idProduit."' name='idProduit' style='display:none'>
+                                    <input type='text' value='".$commande->quantite."' name='quantite' style='display:none'>
+                                </form></td>";
                             echo"</tr>";
                         }
                     }    
