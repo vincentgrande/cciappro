@@ -31,4 +31,31 @@ class UserController extends Controller
  
         
     }
+
+    public function contact(){
+        $user = Auth::user();
+        $panier=0;
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        if(gettype($cart)=="array"){
+            for($i=0;$i<count($cart);$i++){
+                $panier=$panier+intval($cart[$i]['quantite']);
+            }
+        }
+        return view('contact',[
+            'title'=>"Contact",
+            'user' => "$user->firstname ".strtoupper($user->name),
+            'panier'=>$panier,
+            'admin' => $user->isAdmin,
+        ]);
+ 
+        
+    }
+
+    public function contactEnvoi(Request $request){
+        $user = Auth::user();
+
+        Mail::to('vincent.grande@outlook.fr')->send(new contact($request->sujet, $user->name, $user->firstname, $request->message));
+        return redirect()->route('contact');
+    }
 }
