@@ -13,7 +13,7 @@
             <label for="">Sujet :</label><br>
             <input class="input-form" type="text" name="sujet"><br>
             <label for="">Votre message :</label><br>
-            <input class="input-form" type="text" name="mess"><br>
+            <textarea id="mess" name="mess" rows="12" cols="33"></textarea><br>
             <input class="btn-submit" type="submit" value="Envoyer">
         </form>
     </section>
