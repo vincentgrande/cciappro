@@ -41,7 +41,7 @@
                                 }
                             }
                             echo"</td>
-                            <td class='quart-table livre'>STATUT PAR ARTICLE</td>
+                            <td class='quart-table livre'></td>
                             <td class='min-table'><i onclick='showInfo(".$nbCommande->idCommande.");' class='fas fa-angle-down'></i></td>
                         </tr>";
                     echo "<tr class='tr-info dp-none' id='".$nbCommande->idCommande."'>

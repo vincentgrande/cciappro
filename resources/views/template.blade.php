@@ -29,6 +29,7 @@
             <div class="dropdown">
                 <div id="myDropdown" class="dropdown-content">
                     <p class="menuDrop"><a href="{{ route('user') }}">Historique des commandes</a></p>
+                    <p class="menuDrop"><a href="{{ route('contact') }}">Contacter l'administrateur</a></p>
                     <p class="menuDrop"><a href="{{ route('parametres') }}">Paramètres utilisateur</a></p>
                     @if($admin == 1)
                     <p class="menuDrop"><a href="{{ route('admin') }}">Gestion administrateur</a></p>

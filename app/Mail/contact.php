@@ -10,18 +10,20 @@ use Illuminate\Queue\SerializesModels;
 class contact extends Mailable
 {
     use Queueable, SerializesModels;
-    public $sujet, $name, $firstname, $mess;
+    public $sujet, $name, $firstname, $mess, $mail;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($sujet, $name, $firstname, $mess)
+    public function __construct($sujet, $name, $firstname, $mess, $mail)
     {
         $this->sujet = $sujet;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->mess = $mess;
+        $this->mail = $mail;
+
     }
 
     /**

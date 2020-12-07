@@ -58,7 +58,7 @@ class UserController extends Controller
     public function contactEnvoi(Request $request){
         $user = Auth::user();
         $admin="vincent.grande@outlook.fr"; 
-        Mail::to($admin)->send(new contact($request->sujet, $user->name, $user->firstname, $request->mess));
+        Mail::to($admin)->send(new contact($request->sujet, $user->name, $user->firstname, $request->mess, $user->email));
        return redirect()->route('contact');
     }
 }

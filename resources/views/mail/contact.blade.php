@@ -84,8 +84,9 @@
             </tr>
             <tr>
                 <td class="fnd-blanc second-row">
-                    <p>Sujet : {{ $sujet }}</p><br><br>
-                    <p>Message : {{ $mess }}</p><br><br>
+                    <p>Expéditeur : {{ $mail }}</p><br>
+                    <p>Sujet : {{ $sujet }}</p><br>
+                    <p>Message : {{ $mess }}</p><br>
                 </td>
             </tr>
             <tr>
