@@ -24,7 +24,7 @@ class ShopController extends Controller
         return view('shop.shop',[
             'title' => "Shop",
             'user' => "$user->firstname ".strtoupper($user->name),
-            'articles' => Produit::all(),
+            'articles' => Produit::select()->where('isActive','=', 1)->get(),
             'marques' => MarqueProduit::all(),
             'types' => TypeProduit::all(),
             'panier'=>$panier,

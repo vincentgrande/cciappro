@@ -126,12 +126,12 @@ class AdminController extends Controller
         }
         
     }
-    public function supprimerProduit(Request $request){
+    public function visibiliteProduit(Request $request){
         $user = Auth::user();
         
         if($user->isAdmin){
             
-            Produit::where('idProduit','=', intval($request->idProduit))->delete();
+            Produit::where('idProduit','=', intval($request->idProduit))->update(['produits.isActive'=>intval($request->visibilite)]);
             return redirect()->route('gestionStock');
         }else{
             return redirect()->route('shop');

@@ -36,7 +36,7 @@ Route::post('/admin','AdminController@valideCommande')->middleware('auth')->name
 Route::post('/admin2','AdminController@auditerLivraison')->middleware('auth')->name('auditerLivraison');
 Route::post('/admin3','AdminController@refuserCommande')->middleware('auth')->name('refuserCommande');
 Route::post('/modifierQqtProduit','AdminController@modifierQqtProduit')->middleware('auth')->name('modifierQqtProduit');
-Route::post('/supprimerProduit','AdminController@supprimerProduit')->middleware('auth')->name('supprimerProduit');
+Route::post('/visibiliteProduit','AdminController@visibiliteProduit')->middleware('auth')->name('visibiliteProduit');
 Route::post('/contact','UserController@contactEnvoi')->middleware('auth')->name('contactAdmin');
 
 

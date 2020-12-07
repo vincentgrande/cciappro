@@ -18,7 +18,7 @@
                 <td>Stock</td>
                 <td>Ajouter/retirer du stock</td>
                 <td>Changer l'image</td>
-                <td>Supprimer produit</td>
+                <td>Activer/Désactiver produit</td>
             </tr>
         </thead>
         <tbody>
@@ -43,11 +43,14 @@
                 <td><input  type='file' id='avatar' name='avatar' accept='image/png, image/jpeg'></td>
                 <td>";
                 echo "
-                                <form method='post' action='/supprimerProduit'>";
+                                <form method='post' action='/visibiliteProduit'>";
                                 ?>{{ csrf_field() }}<?php 
-                                echo"
-                                    <input type='submit' value='Supprimer'></input>
-                                    <input type='text' value='$produit->idProduit' name='idProduit' style='display:none'>
+                                if($produit->isActive == 1){
+                                    echo "<input type='text' value='0' name='visibilite' style='display:none'><input type='submit' value='Cacher'></input>";
+                                }else if($produit->isActive == 0){
+                                    echo "<input type='text' value='1' name='visibilite' style='display:none'><input type='submit' value='Montrer'></input>";
+                                }
+                                echo"<input type='text' value='$produit->idProduit' name='idProduit' style='display:none'>
                                 </form></td>
             </tr>";
             }
