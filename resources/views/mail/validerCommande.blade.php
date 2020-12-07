@@ -96,7 +96,7 @@
                         <?php
                         foreach($cart as $article){
                             echo    "<tr class='order-tr'>
-                                        <td class='big-size-td'>".$article['article']."</td>
+                                        <td class='big-size-td'>".$article['nomProduit']."</td>
                                         <td class='little-size-td'>".$article['quantite']."</td>
                                     </tr>";
                         }
