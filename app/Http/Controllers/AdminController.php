@@ -5,6 +5,7 @@ use App\Commande;
 use App\User;
 use App\Produit;
 use App\Mail\validerCommande;
+use App\Mail\refuserCommande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -62,6 +63,8 @@ class AdminController extends Controller
         
         if($user->isAdmin){
             Commande::where('idCommande','=', intval($request->idCommande))->update(['commandes.idEtat'=>4]);
+            $cart = Commande::select()->join('produits', 'commandes.idProduit', '=', 'produits.idProduit')->where('idCommande', intval($request->idCommande))->get();
+            Mail::to($request->email)->send(new refuserCommande($request->name, $request->firstName, $cart));
             return redirect()->route('admin');
         }else{
             return redirect()->route('shop');

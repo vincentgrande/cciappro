@@ -85,6 +85,9 @@
                                 ?>{{ csrf_field() }}<?php 
                                 echo"
                                     <input type='submit' value='Refuser la commande'></input>
+                                    <input type='text' name='email' value='".$commande->user->email."' style='display:none'></input>
+                                    <input type='text' name='name' value='".$commande->user->name."' style='display:none'></input>
+                                    <input type='text' name='firstName' value='".$commande->user->firstname."' style='display:none'></input>
                                     <input type='text' value='$commande->idCommande' name='idCommande' style='display:none'>
                                 </form></td>";   
                             }
