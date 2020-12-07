@@ -3,8 +3,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Cookie;
 use App\Commande;
 
@@ -54,8 +57,8 @@ class UserController extends Controller
 
     public function contactEnvoi(Request $request){
         $user = Auth::user();
-
-        Mail::to('vincent.grande@outlook.fr')->send(new contact($request->sujet, $user->name, $user->firstname, $request->message));
-        return redirect()->route('contact');
+        $admin="vincent.grande@outlook.fr"; 
+        Mail::to($admin)->send(new contact($request->sujet, $user->name, $user->firstname, $request->mess));
+       return redirect()->route('contact');
     }
 }
