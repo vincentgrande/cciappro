@@ -46,9 +46,9 @@
                                 <form method='post' action='/visibiliteProduit'>";
                                 ?>{{ csrf_field() }}<?php 
                                 if($produit->isActive == 1){
-                                    echo "<input type='text' value='0' name='visibilite' style='display:none'><input type='submit' value='Cacher'></input>";
+                                    echo "<input type='text' value='0' name='visibilite' style='display:none'><input type='submit' value='Désactiver'></input>";
                                 }else if($produit->isActive == 0){
-                                    echo "<input type='text' value='1' name='visibilite' style='display:none'><input type='submit' value='Montrer'></input>";
+                                    echo "<input type='text' value='1' name='visibilite' style='display:none'><input type='submit' value='Activer'></input>";
                                 }
                                 echo"<input type='text' value='$produit->idProduit' name='idProduit' style='display:none'>
                                 </form></td>
