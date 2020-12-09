@@ -38,6 +38,9 @@ Route::post('/admin3','AdminController@refuserCommande')->middleware('auth')->na
 Route::post('/modifierQqtProduit','AdminController@modifierQqtProduit')->middleware('auth')->name('modifierQqtProduit');
 Route::post('/visibiliteProduit','AdminController@visibiliteProduit')->middleware('auth')->name('visibiliteProduit');
 Route::post('/contact','UserController@contactEnvoi')->middleware('auth')->name('contactAdmin');
+Route::post('/imgupload', 'AdminController@imgUpload')->middleware('auth')->name('imgUpload');
+Route::post('/verif', 'loginController@verif')->name('verif');
+
 
 
 

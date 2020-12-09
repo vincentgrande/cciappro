@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -137,6 +138,18 @@ class AdminController extends Controller
             return redirect()->route('shop');
         }
         
+    }
+   
+    public function imgUpload(Request $request)
+    {
+        
+            $file = $request->file('file');
+            Storage::disk('public')->put("img", $file);
+            //Produit::where('idProduit','=', intval($request->idProduit))->update(['produits.imgProduit'=>$file]);
+            return redirect()->route('gestionStock');
+        
+    
+       
     }
    
 }

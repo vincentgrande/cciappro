@@ -88,4 +88,25 @@ class loginController extends Controller
         }
         
     }
+    public function verif(Request $request)
+    {
+        $input = $request->all();
+        if($input['loginUser']){
+            $user = User::select()->where("loginUser","=",$input['loginUser'])->get();
+            foreach($user as $login){
+                if($login->loginUser == $input['loginUser']){
+                    return response()->json(['success'=>'Nom d\'utilisateur déjà utilisé.']);
+                }
+            }
+        }
+        if($input['email']){
+            $user = User::select()->where("email","=",$input['email'])->get();
+            foreach($user as $mail){
+                if($mail->email == $input['email']){
+                    return response()->json(['success'=>'Mail déjà utilisé.']);
+                }
+            }
+        }
+        
+    }
 }

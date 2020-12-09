@@ -7,6 +7,9 @@
     <meta name="author" content="Golder Lucas">
     <link rel="stylesheet" href="./CSS/connexion.css">
     <meta name="description" content="CCIAPPRO">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="./JS/jquery.min.js"></script>
+
     @livewireStyles
 </head>
 

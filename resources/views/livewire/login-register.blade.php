@@ -1,4 +1,29 @@
 <div>
+<script type="text/javascript">
+   function verif(x){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+        var loginUser = $("input[name=loginUser]").val();
+        var mail = $("input[name=mail]").val();
+
+   
+        $.ajax({
+           type:'POST',
+           url:"{{ route('verif') }}",
+           data:{loginUser:loginUser, email:mail},
+           success:function(data){
+            $("#"+x).css('color', 'red');
+            $("#"+x).val(data.success);
+           }
+        });
+    }
+  
+	
+</script>
     @if($registerForm)
     <section class="dp-flex">
         <div class="btn-mid">
@@ -16,8 +41,10 @@
             <input type="text" wire:model="name" class="input-form" placeholder="@error('name'){{ $message }}@enderror">
             <label>Prénom :</label>
             <input type="text" wire:model="firstname" class="input-form" placeholder="">
+            <label>Identifiant :</label>
+            <input type="text" wire:model="loginUser" id ="loginUser" name="loginUser" class="input-form" onchange="verif('loginUser')">
             <label>Email :</label>
-            <input type="text" wire:model="email" class="input-form" placeholder="@error('email'){{ $message }}@enderror">
+            <input type="text" wire:model="email" id ="mail" class="input-form" name="mail" onchange="verif('mail')" placeholder="@error('email'){{ $message }}@enderror">
             <label>Mot de passe :</label>
             <input type="password" wire:model="password" class="input-form" placeholder="@error('password'){{ $message }}@enderror">
             <label>Département :</label>
@@ -26,9 +53,6 @@
                         <option value="accueil">Accueil</option>
                         <option value="comptabilite">Comptabilité</option>
             </select>
-            <label>Identifiant :</label>
-            <input type="text" wire:model="loginUser" class="input-form">
-            
             <button class="btn-submit" wire:click.prevent="registerStore">S'inscrire</button>
         </form>     
         @if (session()->has('message'))

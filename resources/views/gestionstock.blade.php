@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="./CSS/admin.css">
 <script src="./JS/jquery.min.js"></script>
 <script src="./JS/admin.js"></script>
-
+<script src="./JS/stock.js"></script>
 @stop
 @section ('content')
 <section class="center admin" id="attValid">
@@ -40,8 +40,14 @@
                                     <input type='text' value='$produit->idProduit' name='idProduit' style='display:none'>
                                 </form>
                 </td>
-                <td><input  type='file' id='avatar' name='avatar' accept='image/png, image/jpeg'></td>
-                <td>";
+                <td>
+                <form id='".$produit->idProduit."' method='post' action='/imgupload'>";
+                ?>{{ csrf_field() }}
+                <?php 
+
+                 echo "<input onchange=uploadImg('$produit->idProduit') type='file' id='file' name='file'>";
+                
+                echo "<input type='text' value='$produit->idProduit' name='idProduit' style='display:none'></form></td><td>";
                 echo "
                                 <form method='post' action='/visibiliteProduit'>";
                                 ?>{{ csrf_field() }}<?php 
