@@ -142,14 +142,16 @@ class AdminController extends Controller
    
     public function imgUpload(Request $request)
     {
-        
-            $file = $request->file('file');
-            Storage::disk('public')->put("img", $file);
-            //Produit::where('idProduit','=', intval($request->idProduit))->update(['produits.imgProduit'=>$file]);
+        if($request->file())
+        {
+            $save = $request->file('file')->store('public/shopimg');
+            Produit::where('idProduit','=', intval($request->idProduit))->update(['produits.imgProduit'=>'./storage/shopimg/'.$request->file->hashName()]);
             return redirect()->route('gestionStock');
-        
-    
-       
+        }
+        else
+        {
+            return redirect()->route('gestionStock');
+        } 
     }
    
 }

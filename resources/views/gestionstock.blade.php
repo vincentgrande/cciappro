@@ -41,7 +41,7 @@
                                 </form>
                 </td>
                 <td>
-                <form id='".$produit->idProduit."' method='post' action='/imgupload'>";
+                <form id='".$produit->idProduit."' method='post' action='/imgupload' enctype='multipart/form-data'>";
                 ?>{{ csrf_field() }}
                 <?php 
 
