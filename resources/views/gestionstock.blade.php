@@ -8,7 +8,18 @@
 <script src="./JS/stock.js"></script>
 @stop
 @section ('content')
-<section class="center admin" id="attValid">
+<section class="div-twice center nav2">
+    <div class="div-btn">
+        <button class="btn" onclick="show('stock');">Gérer les produits</button>
+    </div>
+    <div class="div-btn">
+        <button class="btn" onclick="show('addProduct');">Ajouter un produit</button>
+    </div>
+    <div class="div-btn">
+        <button class="btn" onclick="show('addTypeMarque');">Ajouter une marque/un type</button>
+    </div>
+</section>
+<section class="center admin" id="stock">
     <table>
         <thead>
             <tr>
@@ -66,5 +77,51 @@
         
         </tbody>
     </table>
+</section>
+
+<section class="center admin" id="addProduct">
+    <form class="formulaire dp-block" id="form-co" method="POST" enctype='multipart/form-data' action="/ajoutProduit">
+        {{ csrf_field() }}
+        <label for="">Nom du produit :</label><br><br>
+        <input class="input-form" type="text" name="nomProduit" required><br>
+        <label for="">Description du produit :</label><br><br>
+        <input class="input-form" type="text" name="descProduit" required><br>
+        <label for="">Image du produit :</label><br><br>
+        <input type='file' id='file' name='file'><br>
+        <br><label for="">Marque du produit :</label><br><br>
+        <select class="select-size" name="marque" id="marque" required>
+            <option value="" style="padding-right:10px;">Marque</option>
+            @foreach ($marques as $marque)
+            <option value="{{ $marque->idMarqueProduit }} ">{{ $marque->marqueProduit }}</option>
+            @endforeach
+        </select><br>
+        <br><label for="">Type de produit :</label><br><br>
+        <select name="type" class="select-size select" id="type" required>
+            <option value="">Type</option>
+            @foreach ($types as $type)
+            <option value="{{ $type->idTypeProduit }} ">{{ $type->typeProduit }}</option>
+            @endforeach
+        </select><br><br>
+        <label for="">Stock :</label><br><br>
+        <input class="input-form" type="number" name="stockProduit" required><br>
+        <input class="btn-submit" type="submit" value="Modifier">
+    </form>
+</section>
+
+<section class="center admin" id="addTypeMarque">
+    <form class="formulaire dp-block" id="form-co" method="POST" action="/ajoutType">
+        {{ csrf_field() }}
+        <h2>Ajouter un type</h2>
+        <label for="">Nom du type :</label><br><br>
+        <input class="input-form" type="text" name="nomType" required><br>
+        <input class="btn-submit" type="submit" value="Modifier">
+    </form>
+    <form class="formulaire dp-block" id="form-co" method="POST" action="/ajoutMarque">
+        {{ csrf_field() }}
+        <h2>Ajouter une marque</h2>
+        <label for="">Nom de la marque :</label><br><br>
+        <input class="input-form" type="text" name="nomMarque" required><br>
+        <input class="btn-submit" type="submit" value="Modifier">
+    </form>
 </section>
 @stop

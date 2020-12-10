@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Commande;
 use App\User;
 use App\Produit;
+use App\TypeProduit;
+use App\MarqueProduit;
 use App\Mail\validerCommande;
 use App\Mail\refuserCommande;
 use Illuminate\Http\Request;
@@ -106,6 +108,8 @@ class AdminController extends Controller
                 'user' => "$user->firstname ".strtoupper($user->name),
                 'admin' => $user->isAdmin,
                 'produits' => Produit::all(),
+                'marques' => MarqueProduit::all(),
+                'types' => TypeProduit::all(),
             ]);
         }else{
             return redirect()->route('shop');
@@ -153,5 +157,42 @@ class AdminController extends Controller
             return redirect()->route('gestionStock');
         } 
     }
+
+    public function ajoutProduit(Request $request)
+    {
+        if($request->file())
+        {
+            $save = $request->file('file')->store('public/shopimg');
+            $produit = new Produit;
+            $produit->nomProduit = $request->nomProduit;
+            $produit->descProduit = $request->descProduit;
+            $produit->stockProduit = intval($request->stockProduit);
+            $produit->imgProduit = './storage/shopimg/'.$request->file->hashName();
+            $produit->idMarqueProduit = $request->marque;
+            $produit->idTypeProduit = $request->type;
+            $produit->isActive= 1;
+            $produit->save();
+            return redirect()->route('gestionStock');
+        }
+        else
+        {
+            return redirect()->route('gestionStock');
+        } 
+    }
    
+    public function ajoutType(Request $request)
+    {
+        $type = new TypeProduit;
+        $type->typeProduit = $request->nomType;
+        $type->save();
+        return redirect()->route('gestionStock');
+    }
+
+    public function ajoutMarque(Request $request)
+    {
+        $marque = new MarqueProduit;
+        $marque->marqueProduit = $request->nomMarque;
+        $marque->save();
+        return redirect()->route('gestionStock');
+    }
 }

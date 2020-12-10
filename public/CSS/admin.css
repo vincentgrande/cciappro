@@ -23,7 +23,7 @@
   font-family: abeezee;
   cursor:pointer;
 }
-#attLivr, #historique, #gestionUtil,#supprUtil,#modifUser{
+#attLivr, #historique, #gestionUtil,#supprUtil,#modifUser, #addProduct{
   display:none;
 }
 .nav2{
@@ -32,6 +32,11 @@
 .div-btn {
     display: flex;
     flex-direction: column;
+}
+
+.div-twice {
+  display: flex;
+  justify-content: space-around;
 }
 
 .div-third {

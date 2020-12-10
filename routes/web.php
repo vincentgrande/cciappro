@@ -40,6 +40,9 @@ Route::post('/visibiliteProduit','AdminController@visibiliteProduit')->middlewar
 Route::post('/contact','UserController@contactEnvoi')->middleware('auth')->name('contactAdmin');
 Route::post('/imgupload', 'AdminController@imgUpload')->middleware('auth')->name('imgUpload');
 Route::post('/verif', 'loginController@verif')->name('verif');
+Route::post('/ajoutProduit', 'AdminController@ajoutProduit')->middleware('auth')->name('ajoutProduit');
+Route::post('/ajoutType', 'AdminController@ajoutType')->middleware('auth')->name('ajoutType');
+Route::post('/ajoutMarque', 'AdminController@ajoutMarque')->middleware('auth')->name('ajoutMarque');
 
 
 
