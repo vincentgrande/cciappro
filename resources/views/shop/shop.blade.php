@@ -4,9 +4,22 @@
 <script src="./JS/jquery.min.js"></script>
 <script src="./JS/shop.js"></script>
 <link rel="stylesheet" href="./CSS/shop.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
 @stop
 
 @section('content')
+@if(isset($message))
+<div id="dialog" title="Message de l'administrateur">
+  <p> {{ $message }} </p>
+</div>
+ @endif
 <div class="div-shop">
     <div class="div-third searchbar">
         <div>
