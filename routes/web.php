@@ -23,6 +23,8 @@ Route::get('/parametresadmin','paramController@admin')->middleware('auth')->name
 Route::get('/parametresadmin&{id}&{name}&{firstname}&{mail}','paramController@adminWithParametres')->middleware('auth')->name('parametresadminparam');
 Route::get('/gestiondesstocks','AdminController@gestionstock')->middleware('auth')->name('gestionStock');
 Route::get('/contact','UserController@contact')->middleware('auth')->name('contact');
+Route::get('/message','AdminController@message')->middleware('auth')->name('message');
+Route::post('/message','AdminController@publierMessage')->middleware('auth')->name('publierMessage');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
 Route::post('/modifcart' , 'CartController@modifcart')->middleware('auth')->name('modifcart');
 Route::post('/login','loginController@passreset')->name('mail');
@@ -43,6 +45,7 @@ Route::post('/verif', 'loginController@verif')->name('verif');
 Route::post('/ajoutProduit', 'AdminController@ajoutProduit')->middleware('auth')->name('ajoutProduit');
 Route::post('/ajoutType', 'AdminController@ajoutType')->middleware('auth')->name('ajoutType');
 Route::post('/ajoutMarque', 'AdminController@ajoutMarque')->middleware('auth')->name('ajoutMarque');
+
 
 
 

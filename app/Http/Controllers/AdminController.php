@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Commande;
 use App\User;
 use App\Produit;
+use App\message;
 use App\TypeProduit;
 use App\MarqueProduit;
 use App\Mail\validerCommande;
@@ -194,5 +195,32 @@ class AdminController extends Controller
         $marque->marqueProduit = $request->nomMarque;
         $marque->save();
         return redirect()->route('gestionStock');
+    }
+
+    public function message(){
+        $user = Auth::user();
+        $panier=0;
+        $value = Cookie::get(md5($user->loginUser));
+        $cart = unserialize($value);  // je recupère les possibles articles déjà dans le panier
+        if(gettype($cart)=="array"){
+            for($i=0;$i<count($cart);$i++){
+                $panier=$panier+intval($cart[$i]['quantite']);
+            }
+        }
+        return view('message',[
+            'title' => 'Publier un message',
+            'panier'=>$panier,
+            'user' => "$user->firstname ".strtoupper($user->name),
+            'admin' => $user->isAdmin,
+            
+        ]);
+    }
+
+    public function publierMessage(Request $request){
+        $message = new message;
+        $message->message = $request->mess;
+        $message->isActive = 1;
+        $message->save();
+        return redirect()->route('message');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produit;
+use App\message;
 use App\MarqueProduit;
 use App\TypeProduit;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,7 @@ class ShopController extends Controller
             'types' => TypeProduit::all(),
             'panier'=>$panier,
             'admin' => $user->isAdmin,
+            'message' => message::select()->where('isActive', '=',1)->get(),
         ]);
     }
     public function createcookie(Request $request){

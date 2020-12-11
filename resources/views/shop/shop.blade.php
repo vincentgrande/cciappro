@@ -17,7 +17,12 @@
 @section('content')
 @if(isset($message))
 <div id="dialog" title="Message de l'administrateur">
-  <p> {{ $message }} </p>
+    <?php
+        foreach($message as $mess){
+            echo "<p> $mess->message </p>";
+        }
+    ?>
+  
 </div>
  @endif
 <div class="div-shop">
