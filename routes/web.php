@@ -25,6 +25,7 @@ Route::get('/gestiondesstocks','AdminController@gestionstock')->middleware('auth
 Route::get('/contact','UserController@contact')->middleware('auth')->name('contact');
 Route::get('/message','AdminController@message')->middleware('auth')->name('message');
 Route::post('/message','AdminController@publierMessage')->middleware('auth')->name('publierMessage');
+Route::post('/desactiverMessage','AdminController@desactiverMessage')->middleware('auth')->name('desactiverMessage');
 Route::post('/cart' , 'CartController@delete')->middleware('auth')->name('delete');
 Route::post('/modifcart' , 'CartController@modifcart')->middleware('auth')->name('modifcart');
 Route::post('/login','loginController@passreset')->name('mail');

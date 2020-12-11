@@ -15,16 +15,14 @@
 @stop
 
 @section('content')
-@if(isset($message))
-<div id="dialog" title="Message de l'administrateur">
-    <?php
-        foreach($message as $mess){
-            echo "<p> $mess->message </p>";
+<?php
+    foreach($message as $mess){
+        if($mess->message != ""){
+            echo "<div id='dialog' title='Information générale'><p> $mess->message </p></div>";
         }
-    ?>
-  
-</div>
- @endif
+        
+    }
+?>
 <div class="div-shop">
     <div class="div-third searchbar">
         <div>

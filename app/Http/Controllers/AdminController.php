@@ -212,15 +212,21 @@ class AdminController extends Controller
             'panier'=>$panier,
             'user' => "$user->firstname ".strtoupper($user->name),
             'admin' => $user->isAdmin,
-            
+            'oldMessage' =>message::select()->where('isActive','=',1)->get(),
         ]);
     }
 
     public function publierMessage(Request $request){
+        message::where('isActive','=',1)->update(['isActive'=>0]);
         $message = new message;
         $message->message = $request->mess;
         $message->isActive = 1;
         $message->save();
+        return redirect()->route('message');
+    }
+
+    public function desactiverMessage(Request $request){
+        message::where('isActive','=',1)->update(['isActive'=>0]);
         return redirect()->route('message');
     }
 }
