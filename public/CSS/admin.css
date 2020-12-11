@@ -23,7 +23,7 @@
   font-family: abeezee;
   cursor:pointer;
 }
-#attLivr, #historique, #gestionUtil,#supprUtil,#modifUser, #addProduct{
+#attLivr, #historique, #gestionUtil,#supprUtil,#modifUser, #addProduct, #addTypeMarque {
   display:none;
 }
 .nav2{
