@@ -39,7 +39,7 @@ class LoginRegister extends Component
             if($user->isAdmin){
                 return redirect()->route('admin');
             }else{
-                return redirect()->route('shop');
+                return redirect()->route('shop', ['message' => 1]);
             }
     
         }else{

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class ShopController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
         $panier=0;
         $value = Cookie::get(md5($user->loginUser));
@@ -22,6 +22,11 @@ class ShopController extends Controller
                 $panier=$panier+intval($cart[$i]['quantite']);
             }
         }
+        if(isset($request->message)){
+            $message=message::select()->where('isActive', '=',1)->get();
+        }else{
+            $message = array();
+        }
         return view('shop.shop',[
             'title' => "Shop",
             'user' => "$user->firstname ".strtoupper($user->name),
@@ -30,7 +35,7 @@ class ShopController extends Controller
             'types' => TypeProduit::all(),
             'panier'=>$panier,
             'admin' => $user->isAdmin,
-            'message' => message::select()->where('isActive', '=',1)->get(),
+            'message' => $message,
         ]);
     }
     public function createcookie(Request $request){
